@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Turn audio into professional videos on Mac with zero quality loss. Batch convert multiple files, choose presets or upload your own visuals. Preserves original audio bitrate. 7-day free trial.">
+    <meta name="keywords" content="audio to video converter mac, mp3 to video mac, audio visualizer macos, podcast to video converter mac, convert audio to video macbook">
+    <title>Audio To Video - Convert Audio to Video on Mac | Fast & Easy</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 80px 20px 60px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+        
+        /* Mac Badge */
+        .mac-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        .mac-badge svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: #ffffff;
+        }
+        
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease-out;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero h1 .mac-emphasis {
+            color: #fbbf24;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero h1 .mac-emphasis::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #fbbf24;
+            border-radius: 2px;
+        }
+        
+        /* Rotating text animation */
+        .rotating-text {
+            display: inline-block;
+            position: relative;
+            min-width: 320px;
+            height: 1.1em;
+            text-align: left;
+        }
+        
+        .rotating-text span {
+            animation: rotate 8s infinite;
+            opacity: 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+        }
+        
+        .rotating-text span:nth-child(1) {
+            animation-delay: 0s;
+            opacity: 1;
+        }
+        
+        .rotating-text span:nth-child(2) {
+            animation-delay: 2s;
+        }
+        
+        .rotating-text span:nth-child(3) {
+            animation-delay: 4s;
+        }
+        
+        .rotating-text span:nth-child(4) {
+            animation-delay: 6s;
+        }
+        
+        @keyframes rotate {
+            0% {
+                opacity: 1;
+            }
+            22% {
+                opacity: 1;
+            }
+            25% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 48px;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 36px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        
+        .btn-primary {
+            background: #ffffff;
+            color: #667eea;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* System Requirements */
+        .system-req {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+        
+        .system-req svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.8;
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 60px;
+            animation: fadeInUp 0.8s ease-out 0.8s backwards;
+            flex-wrap: wrap;
+        }
+        
+        .proof-item {
+            text-align: center;
+        }
+        
+        .proof-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fbbf24;
+            margin-bottom: 4px;
+        }
+        
+        .proof-label {
+            font-size: 14px;
+            opacity: 0.9;
+            color: #ffffff;
+        }
+        
+        /* Demo Preview */
+        .demo-preview {
+            margin-top: 60px;
+            animation: fadeInUp 0.8s ease-out 1s backwards;
+        }
+        
+        .demo-window {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .window-header {
+            background: linear-gradient(to bottom, #f5f5f7, #e5e5e7);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #d1d1d6;
+        }
+        
+        .window-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red { background: #ff5f57; }
+        .dot-yellow { background: #febc2e; }
+        .dot-green { background: #28c840; }
+        
+        .window-content {
+            padding: 40px;
+            background: #fafafa;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .demo-placeholder {
+            text-align: center;
+            color: #6b7280;
+        }
+        
+        .demo-placeholder svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 16px;
+            opacity: 0.4;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 40px;
+            }
+            
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .rotating-text {
+                min-width: 220px;
+            }
+            
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+                font-size: 16px;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .social-proof {
+                gap: 32px;
+            }
+            
+            .proof-number {
+                font-size: 28px;
+            }
+            
+            .demo-window {
+                margin: 0 -20px;
+                border-radius: 0;
+            }
+            
+            .window-content {
+                padding: 20px;
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <!-- Mac Badge -->
+                <div class="mac-badge">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    <span>macOS App</span>
+                </div>
+                
+                <!-- Main Headline -->
+                <h1>
+                    Turn Audio Into Videos<br>
+                    on <span class="mac-emphasis">Mac</span><br>
+                    <span class="highlight rotating-text">
+                        <span>Lightning Fast</span>
+                        <span>Batch Convert</span>
+                        <span>Lossless Audio</span>
+                        <span>Platform Ready</span>
+                    </span>
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="hero-subtitle">
+                    The fastest way to turn audio into platform-ready videos with zero quality loss. Drop your files, pick from stunning presets or upload your own visuals—audio stays pristine.
+                </p>
+                
+                <!-- CTA Buttons -->
+                <div class="hero-cta">
+                    <a href="#download" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
+                        </svg>
+                        Start Free Trial
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        See How It Works
+                    </a>
+                </div>
+                
+                <!-- Free Trial Badge -->
+                <div class="system-req">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span>7-Day Free Trial • macOS 11.0+ Required</span>
+                </div>
+                
+                <!-- Quality Features (Real Metrics) -->
+                <div class="social-proof">
+                    <div class="proof-item">
+                        <div class="proof-number">Lossless</div>
+                        <div class="proof-label">Audio Quality</div>
+                    </div>
+                    <div class="proof-item">
+                        <div class="proof-number">Batch</div>
+                        <div class="proof-label">Multiple Files</div>
+                    </div>
+                    <div class="proof-item">
+                        <div class="proof-number">4K</div>
+                        <div class="proof-label">Max Resolution</div>
+                    </div>
+                </div>
+                
+                <!-- Demo Preview -->
+                <div class="demo-preview">
+                    <div class="demo-window">
+                        <div class="window-header">
+                            <div class="window-dot dot-red"></div>
+                            <div class="window-dot dot-yellow"></div>
+                            <div class="window-dot dot-green"></div>
+                        </div>
+                        <div class="window-content">
+                            <div class="demo-placeholder">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-10-7.5v5l4-2.5-4-2.5z"/>
+                                </svg>
+                                <p>App Interface Preview</p>
+                                <p style="font-size: 12px; margin-top: 8px;">Screenshot or demo video will go here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
