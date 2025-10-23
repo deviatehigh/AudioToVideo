@@ -207,7 +207,7 @@
         }
         
         .proof-number {
-            font-size: 36px;
+            font-size: 30px;
             font-weight: 800;
             color: #fbbf24;
             margin-bottom: 4px;
@@ -242,258 +242,388 @@
             }
         }
 
-        /* WHO IS THIS FOR SECTION */
-        .who-section {
-            padding: 120px 20px;
-            background: #ffffff;
+        /* MAC NATIVE SECTION - Apple Style */
+        .mac-native-section {
+            padding: 140px 20px 120px;
+            background: #fafafa;
             position: relative;
-            overflow: hidden;
         }
 
-        .who-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
-        }
-        
-        .who-container {
-            max-width: 1400px;
+        .mac-native-container {
+            max-width: 1200px;
             margin: 0 auto;
         }
-        
-        .who-header {
+
+        /* Main Statement */
+        .mac-statement {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 100px;
         }
-        
-        .who-tag {
-            display: inline-block;
-            padding: 8px 20px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            border-radius: 50px;
-            color: #667eea;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
+
+        .mac-title {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #1d1d1f;
+            letter-spacing: -0.03em;
         }
-        
-        .who-title {
-            font-size: 56px;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .who-subtitle {
-            font-size: 20px;
-            color: #666;
+
+        .mac-subtitle {
+            font-size: 21px;
+            line-height: 1.5;
+            color: #6e6e73;
             max-width: 700px;
             margin: 0 auto;
-            line-height: 1.6;
+            font-weight: 400;
         }
 
-        /* Personas Grid */
-        .personas-grid {
+        /* Three Pillars Grid */
+        .pillars-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 60px;
+            gap: 60px;
+            margin-bottom: 80px;
         }
 
-        .persona-card {
-            background: #ffffff;
-            border-radius: 24px;
-            padding: 48px 36px;
+        .pillar {
+            text-align: center;
+        }
+
+        .pillar-visual {
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            overflow: hidden;
         }
 
-        .persona-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+        /* Waveform Animation */
+        .waveform {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 8px;
+            height: 100px;
+            margin-bottom: 20px;
         }
 
-        .persona-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-            border-color: transparent;
+        .wave-bar {
+            width: 8px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            animation: wave 1.5s ease-in-out infinite;
         }
 
-        .persona-card:hover::before {
-            opacity: 1;
+        @keyframes wave {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.5); }
         }
 
-        .persona-icon {
-            width: 80px;
-            height: 80px;
+        .quality-badge {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
             border-radius: 20px;
+            padding: 8px 20px;
+        }
+
+        .badge-text {
+            font-size: 15px;
+            font-weight: 600;
+            color: #667eea;
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+        }
+
+        /* Timeline Visual */
+        .timeline {
+            width: 280px;
+            height: 8px;
+            background: rgba(0, 0, 0, 0.06);
+            border-radius: 4px;
+            display: flex;
+            gap: 4px;
+            padding: 4px;
+            margin-bottom: 20px;
+        }
+
+        .timeline-segment {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+            animation: timeline-pulse 2s ease-in-out infinite;
+        }
+
+        .timeline-segment:nth-child(1) { animation-delay: 0s; }
+        .timeline-segment:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-segment:nth-child(3) { animation-delay: 0.4s; }
+        .timeline-segment:nth-child(4) { animation-delay: 0.6s; }
+
+        @keyframes timeline-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .duration-label {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
+            gap: 12px;
+            font-size: 14px;
+            color: #86868b;
+            font-weight: 600;
+        }
+
+        .duration-label span:nth-child(2) {
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        /* Chip Diagram */
+        .chip-diagram {
+            width: 120px;
+            height: 120px;
             position: relative;
-            background: var(--bg-gradient);
+            margin: 0 auto 20px;
         }
 
-        .persona-icon::after {
-            content: '';
+        .chip-core {
             position: absolute;
-            inset: 0;
-            border-radius: 20px;
-            padding: 2px;
-            background: var(--gradient);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0.3;
-        }
-
-        .persona-icon svg {
             width: 40px;
             height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+        }
+
+        .chip-ring {
+            position: absolute;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .ring-1 {
+            width: 60px;
+            height: 60px;
+            animation: ring-pulse 2s ease-in-out infinite;
+        }
+
+        .ring-2 {
+            width: 80px;
+            height: 80px;
+            animation: ring-pulse 2s ease-in-out infinite 0.3s;
+        }
+
+        .ring-3 {
+            width: 100px;
+            height: 100px;
+            animation: ring-pulse 2s ease-in-out infinite 0.6s;
+        }
+
+        @keyframes ring-pulse {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .chip-label {
+            font-size: 14px;
+            color: #86868b;
+            font-weight: 600;
+        }
+
+        /* Pillar Text */
+        .pillar-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+        }
+
+        .pillar-description {
+            font-size: 17px;
+            line-height: 1.5;
+            color: #6e6e73;
+            font-weight: 400;
+        }
+
+        /* Tech Note */
+        .tech-note {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .tech-note p {
+            font-size: 17px;
+            color: #6e6e73;
+            margin: 0;
+        }
+
+        .tech-note strong {
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+
+        /* FREE TRIAL & INVITE SECTION */
+        .trial-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trial-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .trial-container {
+            max-width: 1200px;
+            margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
-        .persona-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1a1a1a;
-        }
-
-        .persona-description {
-            font-size: 15px;
-            color: #666;
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .persona-use-case {
-            font-size: 14px;
-            color: #999;
-            font-style: italic;
-            padding: 16px;
-            background: rgba(0, 0, 0, 0.02);
-            border-radius: 12px;
-            border-left: 3px solid var(--accent);
-        }
-
-        /* Persona-specific colors */
-        .persona-card:nth-child(1) {
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --bg-gradient: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            --accent: #667eea;
-        }
-
-        .persona-card:nth-child(1) .persona-icon svg {
-            fill: url(#gradient1);
-        }
-
-        .persona-card:nth-child(2) {
-            --gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --bg-gradient: linear-gradient(135deg, rgba(240, 147, 251, 0.1) 0%, rgba(245, 87, 108, 0.1) 100%);
-            --accent: #f093fb;
-        }
-
-        .persona-card:nth-child(2) .persona-icon svg {
-            fill: url(#gradient2);
-        }
-
-        .persona-card:nth-child(3) {
-            --gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --bg-gradient: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 242, 254, 0.1) 100%);
-            --accent: #4facfe;
-        }
-
-        .persona-card:nth-child(3) .persona-icon svg {
-            fill: url(#gradient3);
-        }
-
-        .persona-card:nth-child(4) {
-            --gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            --bg-gradient: linear-gradient(135deg, rgba(67, 233, 123, 0.1) 0%, rgba(56, 249, 215, 0.1) 100%);
-            --accent: #43e97b;
-        }
-
-        .persona-card:nth-child(4) .persona-icon svg {
-            fill: url(#gradient4);
-        }
-
-        .persona-card:nth-child(5) {
-            --gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            --bg-gradient: linear-gradient(135deg, rgba(250, 112, 154, 0.1) 0%, rgba(254, 225, 64, 0.1) 100%);
-            --accent: #fa709a;
-        }
-
-        .persona-card:nth-child(5) .persona-icon svg {
-            fill: url(#gradient5);
-        }
-
-        .persona-card:nth-child(6) {
-            --gradient: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
-            --bg-gradient: linear-gradient(135deg, rgba(48, 207, 208, 0.1) 0%, rgba(51, 8, 103, 0.1) 100%);
-            --accent: #30cfd0;
-        }
-
-        .persona-card:nth-child(6) .persona-icon svg {
-            fill: url(#gradient6);
-        }
-
-        /* SVG Gradients */
-        svg defs {
-            position: absolute;
-        }
-
-        /* Bottom CTA */
-        .who-cta {
+        .trial-header {
             text-align: center;
-            margin-top: 80px;
-            padding: 60px 40px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-            border-radius: 32px;
-            border: 1px solid rgba(102, 126, 234, 0.1);
+            margin-bottom: 80px;
+            color: #ffffff;
         }
 
-        .who-cta-title {
-            font-size: 32px;
-            font-weight: 700;
+        .trial-title {
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 16px;
-            color: #1a1a1a;
+            color: #ffffff;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .who-cta-text {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 32px;
-            max-width: 600px;
+        .trial-subtitle {
+            font-size: 21px;
+            font-weight: 500;
+            opacity: 0.95;
+            color: #ffffff;
+        }
+
+        /* Main Content Grid */
+        .trial-content {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 120px;
+            align-items: center;
+            margin-bottom: 60px;
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* Invite Visual */
+        .invite-visual-wrapper {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .invite-flow {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .invite-person {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .person-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+        }
+
+        .person-label {
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .time-badge {
+            background: #fbbf24;
+            color: #1d1d1f;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+        }
+
+        .invite-arrow {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Trial Text */
+        .trial-text-wrapper {
+            color: #ffffff;
+        }
+
+        .invite-title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .invite-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 32px;
+        }
+
+        /* Trial CTAs */
+        .trial-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
         }
         
         /* Responsive */
         @media (max-width: 1200px) {
-            .personas-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .pillars-grid {
+                gap: 40px;
+            }
+
+            .trial-content {
+                gap: 60px;
             }
         }
 
@@ -523,37 +653,88 @@
                 font-size: 28px;
             }
 
-            .who-section {
+            .mac-native-section {
+                padding: 80px 20px 60px;
+            }
+
+            .mac-title {
+                font-size: 40px;
+            }
+
+            .mac-subtitle {
+                font-size: 17px;
+            }
+
+            .mac-statement {
+                margin-bottom: 60px;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .pillar-visual {
+                height: 180px;
+            }
+
+            .tech-note {
+                padding: 24px;
+            }
+
+            .tech-note p {
+                font-size: 15px;
+            }
+
+            .trial-section {
                 padding: 80px 20px;
             }
 
-            .who-title {
-                font-size: 36px;
+            .trial-title {
+                font-size: 40px;
             }
 
-            .who-subtitle {
-                font-size: 16px;
+            .trial-subtitle {
+                font-size: 17px;
             }
 
-            .personas-grid {
+            .trial-header {
+                margin-bottom: 60px;
+            }
+
+            .trial-content {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 48px;
+                max-width: 100%;
             }
 
-            .persona-card {
-                padding: 32px 24px;
+            .invite-visual-wrapper {
+                justify-content: center;
             }
 
-            .who-cta {
-                padding: 40px 24px;
+            .invite-flow {
+                flex-direction: column;
+                gap: 20px;
             }
 
-            .who-cta-title {
+            .invite-arrow {
+                transform: rotate(90deg);
+            }
+
+            .invite-title {
                 font-size: 24px;
             }
 
-            .who-cta-text {
+            .invite-description {
                 font-size: 16px;
+            }
+
+            .trial-ctas {
+                flex-direction: column;
+            }
+
+            .trial-ctas .btn {
+                width: 100%;
             }
         }
     </style>
@@ -572,12 +753,12 @@
                 
                 <!-- Main Headline -->
                 <h1>
-                    Turn Audio Into Videos<br>on <span class="mac-emphasis">Mac</span>
+                    Turn Audio Into <span class="animated-word">Video</span><br>on <span class="mac-emphasis">Mac</span>
                 </h1>
                 
                 <!-- Subtitle -->
                 <p class="hero-subtitle">
-                    The fastest way to turn audio into platform-ready videos with zero quality loss. Drop your files, pick from stunning presets or upload your own visuals—audio stays pristine.
+                    The easiest way to convert audio into platform-ready videos with zero quality loss. Drop your files, pick from stunning presets or upload your own visuals. Audio stays pristine.
                 </p>
                 
                 <!-- CTA Buttons -->
@@ -607,7 +788,7 @@
                 <!-- Quality Features (Real Metrics) -->
                 <div class="social-proof">
                     <div class="proof-item">
-                        <div class="proof-number">Lossless</div>
+                        <div class="proof-number">Best</div>
                         <div class="proof-label">Audio Quality</div>
                     </div>
                     <div class="proof-item">
@@ -615,171 +796,159 @@
                         <div class="proof-label">Multiple Files</div>
                     </div>
                     <div class="proof-item">
-                        <div class="proof-number">4K</div>
-                        <div class="proof-label">Max Resolution</div>
+                        <div class="proof-number">Both</div>
+                        <div class="proof-label">Aspect Ratios</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WHO IS THIS FOR SECTION -->
-    <section class="who-section">
-        <div class="who-container">
-            <div class="who-header">
-                <div class="who-tag">Made For Creators</div>
-                <h2 class="who-title">Your Audio Deserves<br>To Be Seen</h2>
-                <p class="who-subtitle">
-                    Whether you're sharing your craft or building your brand, Audio To Video turns your sound into stunning visuals that perform across every platform.
+    <!-- BUILT FOR MAC SECTION -->
+    <section class="mac-native-section">
+        <div class="mac-native-container">
+            <!-- Main Statement -->
+            <div class="mac-statement">
+                <h2 class="mac-title">Built for Mac.<br>Built right.</h2>
+                <p class="mac-subtitle">
+                    Mac is the platform creators choose for audio and video work. We built this the Mac way—natively, powerfully, naturally. This is the workflow you deserve.
                 </p>
             </div>
 
-            <div class="personas-grid">
-                <!-- Musicians -->
-                <div class="persona-card">
-                    <div class="persona-icon">
-                        <svg viewBox="0 0 24 24">
-                            <defs>
-                                <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#667eea"/>
-                                    <stop offset="100%" style="stop-color:#764ba2"/>
-                                </linearGradient>
-                            </defs>
-                            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-                        </svg>
+            <!-- Three Technical Pillars -->
+            <div class="pillars-grid">
+                <!-- Pillar 1: Perfect Quality -->
+                <div class="pillar">
+                    <div class="pillar-visual">
+                        <div class="waveform">
+                            <div class="wave-bar" style="height: 40%; animation-delay: 0s;"></div>
+                            <div class="wave-bar" style="height: 70%; animation-delay: 0.1s;"></div>
+                            <div class="wave-bar" style="height: 50%; animation-delay: 0.2s;"></div>
+                            <div class="wave-bar" style="height: 85%; animation-delay: 0.3s;"></div>
+                            <div class="wave-bar" style="height: 65%; animation-delay: 0.4s;"></div>
+                            <div class="wave-bar" style="height: 45%; animation-delay: 0.5s;"></div>
+                            <div class="wave-bar" style="height: 75%; animation-delay: 0.6s;"></div>
+                        </div>
+                        <div class="quality-badge">
+                            <span class="badge-text">128-320 kbps</span>
+                        </div>
                     </div>
-                    <h3 class="persona-title">Musicians</h3>
-                    <p class="persona-description">
-                        Transform your tracks into eye-catching videos for YouTube, Instagram, and TikTok. Convert your entire album in minutes with batch processing while keeping your audio perfectly pristine.
+                    <h3 class="pillar-title">Matches Your Quality</h3>
+                    <p class="pillar-description">
+                        Automatically detects your audio bitrate and preserves it exactly. No re-encoding. No degradation. What goes in, stays perfect.
                     </p>
-                    <div class="persona-use-case">
-                        "I dropped my 10-track EP and had videos ready for every platform in under 5 minutes."
-                    </div>
                 </div>
 
-                <!-- Podcasters -->
-                <div class="persona-card">
-                    <div class="persona-icon">
-                        <svg viewBox="0 0 24 24">
-                            <defs>
-                                <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#f093fb"/>
-                                    <stop offset="100%" style="stop-color:#f5576c"/>
-                                </linearGradient>
-                            </defs>
-                            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
-                            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-                        </svg>
+                <!-- Pillar 2: Any Length -->
+                <div class="pillar">
+                    <div class="pillar-visual">
+                        <div class="timeline">
+                            <div class="timeline-segment" style="width: 15%;"></div>
+                            <div class="timeline-segment" style="width: 25%;"></div>
+                            <div class="timeline-segment" style="width: 35%;"></div>
+                            <div class="timeline-segment" style="width: 25%;"></div>
+                        </div>
+                        <div class="duration-label">
+                            <span>3s</span>
+                            <span>→</span>
+                            <span>3hrs+</span>
+                        </div>
                     </div>
-                    <h3 class="persona-title">Podcasters</h3>
-                    <p class="persona-description">
-                        Reach beyond audio platforms. Turn your episodes into videos for YouTube and social media clips without complex editing. Your voice, amplified with stunning visuals.
+                    <h3 class="pillar-title">Unlimited Length</h3>
+                    <p class="pillar-description">
+                        Full podcasts. Complete albums. Hour-long sessions. Intelligently loops backgrounds to match any audio duration.
                     </p>
-                    <div class="persona-use-case">
-                        "My podcast now gets discovered on YouTube Search—audience grew 3x in two months."
-                    </div>
                 </div>
 
-                <!-- Content Creators -->
-                <div class="persona-card">
-                    <div class="persona-icon">
-                        <svg viewBox="0 0 24 24">
-                            <defs>
-                                <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#4facfe"/>
-                                    <stop offset="100%" style="stop-color:#00f2fe"/>
-                                </linearGradient>
-                            </defs>
-                            <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
-                        </svg>
+                <!-- Pillar 3: Mac Power -->
+                <div class="pillar">
+                    <div class="pillar-visual">
+                        <div class="chip-diagram">
+                            <div class="chip-core"></div>
+                            <div class="chip-ring ring-1"></div>
+                            <div class="chip-ring ring-2"></div>
+                            <div class="chip-ring ring-3"></div>
+                        </div>
+                        <div class="chip-label">M-Series & Intel</div>
                     </div>
-                    <h3 class="persona-title">Content Creators</h3>
-                    <p class="persona-description">
-                        Create video content at the speed of your ideas. Audio tutorials, voiceovers, and commentary become platform-ready videos with one drop. Focus on creating, not editing.
+                    <h3 class="pillar-title">Native Performance</h3>
+                    <p class="pillar-description">
+                        Hardware-accelerated encoding using your Mac's full GPU and CPU power. Converts faster than real-time playback.
                     </p>
-                    <div class="persona-use-case">
-                        "I turned my audio course into a video series without learning video editing."
-                    </div>
-                </div>
-
-                <!-- Educators & Coaches -->
-                <div class="persona-card">
-                    <div class="persona-icon">
-                        <svg viewBox="0 0 24 24">
-                            <defs>
-                                <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#43e97b"/>
-                                    <stop offset="100%" style="stop-color:#38f9d7"/>
-                                </linearGradient>
-                            </defs>
-                            <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-                        </svg>
-                    </div>
-                    <h3 class="persona-title">Educators & Coaches</h3>
-                    <p class="persona-description">
-                        Package your lessons and guidance into engaging video content. Turn audio recordings into professional-looking educational videos that students can watch anywhere.
-                    </p>
-                    <div class="persona-use-case">
-                        "My language lessons on YouTube now reach students I never could with audio alone."
-                    </div>
-                </div>
-
-                <!-- Marketing Teams -->
-                <div class="persona-card">
-                    <div class="persona-icon">
-                        <svg viewBox="0 0 24 24">
-                            <defs>
-                                <linearGradient id="gradient5" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#fa709a"/>
-                                    <stop offset="100%" style="stop-color:#fee140"/>
-                                </linearGradient>
-                            </defs>
-                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-                        </svg>
-                    </div>
-                    <h3 class="persona-title">Marketing Teams</h3>
-                    <p class="persona-description">
-                        Scale your social video production effortlessly. Convert audio testimonials, announcements, and branded content into videos across all aspect ratios and resolutions.
-                    </p>
-                    <div class="persona-use-case">
-                        "We tripled our video output without hiring more editors or buying expensive software."
-                    </div>
-                </div>
-
-                <!-- Audiobook Authors -->
-                <div class="persona-card">
-                    <div class="persona-icon">
-                        <svg viewBox="0 0 24 24">
-                            <defs>
-                                <linearGradient id="gradient6" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#30cfd0"/>
-                                    <stop offset="100%" style="stop-color:#330867"/>
-                                </linearGradient>
-                            </defs>
-                            <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
-                        </svg>
-                    </div>
-                    <h3 class="persona-title">Audiobook Authors</h3>
-                    <p class="persona-description">
-                        Give your audiobook chapters a visual presence. Create promotional videos or full chapter videos with custom artwork, expanding your audience beyond audio-only platforms.
-                    </p>
-                    <div class="persona-use-case">
-                        "My audiobook samples on Instagram drove 40% more sales to my full audiobook."
-                    </div>
                 </div>
             </div>
 
-            <div class="who-cta">
-                <h3 class="who-cta-title">Ready to amplify your audio?</h3>
-                <p class="who-cta-text">
-                    Join creators who are reaching millions more people by turning their audio into stunning videos—no design skills, no video editing, no hassle.
+            <!-- Bottom Technical Note -->
+            <div class="tech-note">
+                <p>
+                    Built with <strong>AVFoundation</strong>—the same technology Apple uses in Final Cut Pro and Logic. Professional power, everyday simplicity.
                 </p>
-                <a href="https://github.com/deviatehigh/AudioToVideo/releases/download/untagged-4213d262619211243dff/AudioToVideo.dmg" class="btn btn-primary">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
-                    </svg>
-                    Download Free
-                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FREE TRIAL & INVITE SECTION -->
+    <section class="trial-section">
+        <div class="trial-container">
+            <!-- Header -->
+            <div class="trial-header">
+                <h2 class="trial-title">Try it free. Share the love.</h2>
+                <p class="trial-subtitle">7 days to create unlimited videos. No watermark. No email. No credit card.</p>
+            </div>
+
+            <!-- Main Content -->
+            <div class="trial-content">
+                <!-- Left: Invite Visual -->
+                <div class="invite-visual-wrapper">
+                    <div class="invite-flow">
+                        <div class="invite-person you">
+                            <div class="person-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                            </div>
+                            <span class="person-label">You</span>
+                            <div class="time-badge">+2 weeks</div>
+                        </div>
+                        
+                        <div class="invite-arrow">
+                            <svg width="80" height="24" viewBox="0 0 80 24" fill="none">
+                                <path d="M2 12h76M70 6l8 6-8 6" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+
+                        <div class="invite-person friend">
+                            <div class="person-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                </svg>
+                            </div>
+                            <span class="person-label">Friend</span>
+                            <div class="time-badge">+2 weeks</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Text & CTA -->
+                <div class="trial-text-wrapper">
+                    <h3 class="invite-title">Invite a friend, both get 2 more weeks</h3>
+                    <p class="invite-description">Share your invite code. When they redeem it, you both get an extra 2 weeks free. Everyone wins.</p>
+                    
+                    <div class="trial-ctas">
+                        <a href="https://github.com/deviatehigh/AudioToVideo/releases/download/untagged-4213d262619211243dff/AudioToVideo.dmg" class="btn btn-primary">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
+                            </svg>
+                            Download Free
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=MREC78wadfw" target="_blank" class="btn btn-secondary">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                            </svg>
+                            Watch Demo
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
