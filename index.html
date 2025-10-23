@@ -124,13 +124,54 @@
             animation: fadeInUp 0.8s ease-out 0.2s backwards;
         }
         
+        /* Social Proof - Moved above CTA */
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+        
+        .proof-item {
+            text-align: center;
+        }
+        
+        .proof-number {
+            font-size: 30px;
+            font-weight: 800;
+            color: #fbbf24;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 10px rgba(251, 191, 36, 0.3);
+        }
+        
+        .proof-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* No signup badge - Moved between numbers and buttons */
+        .no-signup {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease-out 0.5s backwards;
+        }
+        
+        .no-signup svg {
+            width: 18px;
+            height: 18px;
+        }
+        
         .hero-cta {
             display: flex;
             gap: 16px;
             justify-content: center;
             align-items: center;
-            margin-bottom: 24px;
-            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
             flex-wrap: wrap;
         }
         
@@ -177,48 +218,6 @@
             height: 20px;
         }
         
-        /* No signup badge */
-        .no-signup {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 14px;
-            margin-bottom: 32px;
-            animation: fadeInUp 0.8s ease-out 0.5s backwards;
-        }
-        
-        .no-signup svg {
-            width: 18px;
-            height: 18px;
-        }
-        
-        /* Social Proof */
-        .social-proof {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            margin-top: 24px;
-            animation: fadeInUp 0.8s ease-out 0.6s backwards;
-        }
-        
-        .proof-item {
-            text-align: center;
-        }
-        
-        .proof-number {
-            font-size: 30px;
-            font-weight: 800;
-            color: #fbbf24;
-            margin-bottom: 4px;
-            text-shadow: 0 2px 10px rgba(251, 191, 36, 0.3);
-        }
-        
-        .proof-label {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -239,6 +238,28 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        /* Hide any navigation arrows on desktop */
+        @media (min-width: 769px) {
+            /* Hide scroll-to-top arrows, navigation arrows, etc. */
+            [class*="arrow"]:not(.step-arrow):not(.invite-arrow),
+            .scroll-to-top,
+            .back-to-top,
+            .top-arrow,
+            nav .arrow,
+            .nav-arrow {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+            }
+            
+            /* Hide any absolutely positioned arrows in top right */
+            .hero::after,
+            .hero > [class*="arrow"],
+            .hero-container > [class*="arrow"] {
+                display: none !important;
             }
         }
 
@@ -616,6 +637,310 @@
             flex-wrap: wrap;
         }
         
+        /* HOW IT WORKS SECTION */
+        .how-it-works-section {
+            padding: 140px 20px;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-it-works-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(102, 126, 234, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .how-it-works-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .how-it-works-header {
+            text-align: center;
+            margin-bottom: 100px;
+            animation: sectionFadeIn 1s ease-out;
+        }
+
+        .how-it-works-title {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #1d1d1f;
+            letter-spacing: -0.03em;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .how-it-works-subtitle {
+            font-size: 21px;
+            line-height: 1.5;
+            color: #6e6e73;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+            animation: slideUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 80px;
+            margin-bottom: 0; /* Removed margin since CTA is gone */
+        }
+
+        /* Fix step alignment */
+        .step {
+            text-align: center;
+            position: relative;
+            animation: stepSlideIn 0.8s ease-out backwards;
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+            justify-content: flex-start; /* Changed from center to flex-start */
+            align-items: center; /* Ensure proper centering */
+            padding: 0 20px; /* Add padding for better spacing */
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px; /* Ensure auto margins for centering */
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            animation: numberPulse 2s ease-in-out infinite;
+            order: 1;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+
+        .step-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+            transition: color 0.3s ease;
+            order: 2;
+            text-align: center; /* Ensure title is centered */
+            width: 100%; /* Full width for centering */
+        }
+
+        .step-description {
+            font-size: 17px;
+            line-height: 1.5;
+            color: #6e6e73;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            order: 3;
+            text-align: center; /* Center the description text */
+            max-width: 300px; /* Limit width for readability */
+            margin: 0 auto; /* Center the description block */
+        }
+
+        /* Remove all visual elements */
+        .step-visual,
+        .file-upload-icon,
+        .background-visual,
+        .background-option,
+        .convert-visual,
+        .convert-button {
+            display: none !important;
+        }
+
+        @keyframes numberPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 12px 32px rgba(102, 126, 234, 0.3);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 16px 40px rgba(102, 126, 234, 0.4);
+            }
+        }
+
+        /* Section Animations */
+        @keyframes sectionFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes stepSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Bottom CTA Animation */
+        .how-it-works-cta {
+            display: none;
+        }
+
+        @keyframes ctaSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .how-it-works-cta .btn {
+            margin-top: 24px;
+        }
+
+        /* FAQ SECTION */
+        .faq-section {
+            padding: 140px 20px;
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .faq-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        .faq-subtitle {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #6e6e73;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* FAQ Accordion */
+        .faq-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 32px;
+            text-align: left;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+            line-height: 1.4;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(102, 126, 234, 0.02);
+        }
+
+        .faq-question:focus {
+            outline: none;
+            background: rgba(102, 126, 234, 0.02);
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            color: #667eea;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 32px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #6e6e73;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 32px 32px;
+        }
+
+        .faq-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
         /* Responsive */
         @media (max-width: 1200px) {
             .pillars-grid {
@@ -624,6 +949,14 @@
 
             .trial-content {
                 gap: 60px;
+            }
+
+            .steps-grid {
+                gap: 60px;
+            }
+
+            .faq-grid {
+                gap: 40px;
             }
         }
 
@@ -736,6 +1069,349 @@
             .trial-ctas .btn {
                 width: 100%;
             }
+
+            .how-it-works-section {
+                padding: 80px 20px;
+            }
+
+            .how-it-works-title {
+                font-size: 40px;
+            }
+
+            .how-it-works-subtitle {
+                font-size: 17px;
+            }
+
+            .how-it-works-header {
+                margin-bottom: 60px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .step-arrow {
+                display: none;
+            }
+
+            .how-it-works-cta {
+                padding: 40px 24px;
+            }
+
+            .faq-section {
+                padding: 80px 20px;
+            }
+
+            .faq-title {
+                font-size: 36px;
+            }
+
+            .faq-subtitle {
+                font-size: 16px;
+            }
+
+            .faq-header {
+                margin-bottom: 60px;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .faq-item {
+                padding: 24px;
+            }
+
+            .faq-question {
+                font-size: 16px;
+            }
+
+            .faq-answer {
+                font-size: 15px;
+            }
+        }
+
+
+        /* WORKFLOW COMPARISON SECTION STYLES */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .process-steps .step {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .process-steps .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+            margin-bottom: 4px;
+        }
+
+        .before-column .process-steps .step-number {
+            background: rgba(239, 68, 68, 0.1);
+            color: #dc2626;
+        }
+
+        .after-column .process-steps .step-number {
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+        }
+
+        .process-steps .step-text {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #4b5563;
+        }
+
+        /* WHO IT'S BUILT FOR SECTION */
+        .built-for-section {
+            padding: 140px 20px;
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        .built-for-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .built-for-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .built-for-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        .built-for-subtitle {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #6e6e73;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .built-for-content {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .user-types-column {
+            position: sticky;
+            top: 100px;
+        }
+
+        .user-types-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            height: 600px; /* Fixed height to match content */
+        }
+
+        .user-type {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #ffffff;
+            border: 2px solid transparent;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .user-type::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .user-type.loading::before {
+            left: 100%;
+        }
+
+        .user-type:hover,
+        .user-type.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            transform: translateX(8px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+        }
+
+        .user-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .user-type:hover .user-icon,
+        .user-type.active .user-icon {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        .user-type h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+
+        .content-area {
+            position: relative;
+            min-height: 600px; /* Match the menu height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            flex: 1;
+        }
+
+        .user-content.active {
+            display: flex;
+            flex-direction: column;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .user-content h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #1d1d1f;
+            line-height: 1.3;
+        }
+
+        .user-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #6e6e73;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .user-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .built-for-content {
+                grid-template-columns: 300px 1fr;
+                gap: 60px;
+            }
+            .user-types-list {
+                height: 500px;
+            }
+            .content-area {
+                min-height: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .built-for-section {
+                padding: 80px 20px;
+            }
+
+            .built-for-title {
+                font-size: 36px;
+            }
+
+            .built-for-subtitle {
+                font-size: 16px;
+            }
+
+            .built-for-header {
+                margin-bottom: 60px;
+            }
+
+            .built-for-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .user-types-column {
+                position: static;
+            }
+
+            .user-types-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                height: auto;
+            }
+
+            .user-type {
+                padding: 16px;
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+
+            .user-type h4 {
+                font-size: 16px;
+            }
+
+            .user-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .content-area {
+                min-height: 400px;
+            }
+
+            .user-content h3 {
+                font-size: 24px;
+            }
+
+            .user-content p {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -761,31 +1437,7 @@
                     The easiest way to convert audio into platform-ready videos with zero quality loss. Drop your files, pick from stunning presets or upload your own visuals. Audio stays pristine.
                 </p>
                 
-                <!-- CTA Buttons -->
-                <div class="hero-cta">
-                    <a href="https://github.com/deviatehigh/AudioToVideo/releases/download/untagged-4213d262619211243dff/AudioToVideo.dmg" class="btn btn-primary">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
-                        </svg>
-                        Free Download
-                    </a>
-                    <a href="https://www.youtube.com/watch?v=MREC78wadfw" target="_blank" class="btn btn-secondary">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                        </svg>
-                        See How It Works
-                    </a>
-                </div>
-                
-                <!-- No signup required -->
-                <div class="no-signup">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                    <span>No signup or credit card required • 7-Day Free Trial</span>
-                </div>
-                
-                <!-- Quality Features (Real Metrics) -->
+                <!-- Quality Features (Real Metrics) - Moved above CTA -->
                 <div class="social-proof">
                     <div class="proof-item">
                         <div class="proof-number">Best</div>
@@ -799,6 +1451,30 @@
                         <div class="proof-number">Both</div>
                         <div class="proof-label">Aspect Ratios</div>
                     </div>
+                </div>
+                
+                <!-- No signup required - Moved between numbers and buttons -->
+                <div class="no-signup">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <span>No signup or credit card required • 7-Day Free Trial</span>
+                </div>
+                
+                <!-- CTA Buttons - Moved below the badges -->
+                <div class="hero-cta">
+                    <a href="https://github.com/deviatehigh/AudioToVideo/releases/download/AudioToVideo/AudioToVideo.dmg" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
+                        </svg>
+                        Free Download
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=MREC78wadfw" target="_blank" class="btn btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        See How It Works
+                    </a>
                 </div>
             </div>
         </div>
@@ -904,7 +1580,7 @@
                         <div class="invite-person you">
                             <div class="person-icon">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                    <path d="M12,12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                                 </svg>
                             </div>
                             <span class="person-label">You</span>
@@ -920,7 +1596,7 @@
                         <div class="invite-person friend">
                             <div class="person-icon">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                    <path d="M12,12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                                 </svg>
                             </div>
                             <span class="person-label">Friend</span>
@@ -934,8 +1610,8 @@
                     <h3 class="invite-title">Invite a friend, both get 2 more weeks</h3>
                     <p class="invite-description">Share your invite code. When they redeem it, you both get an extra 2 weeks free. Everyone wins.</p>
                     
-                    <div class="trial-ctas">
-                        <a href="https://github.com/deviatehigh/AudioToVideo/releases/download/untagged-4213d262619211243dff/AudioToVideo.dmg" class="btn btn-primary">
+                        <div class="trial-ctas">
+                        <a href="https://github.com/deviatehigh/AudioToVideo/releases/download/AudioToVideo/AudioToVideo.dmg" class="btn btn-primary">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/>
                             </svg>
@@ -952,5 +1628,2444 @@
             </div>
         </div>
     </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="how-it-works-section">
+        <div class="how-it-works-container">
+            <!-- Header -->
+            <div class="how-it-works-header">
+                <h2 class="how-it-works-title">How it works</h2>
+                <p class="how-it-works-subtitle">
+                    Three simple steps to turn your audio into professional videos. No learning curve, no complex settings—just results.
+                </p>
+            </div>
+
+            <!-- Three Steps -->
+            <div class="steps-grid">
+                <!-- Step 1: Select Audio -->
+                <div class="step">
+                    <h3 class="step-title">Select Your Audio</h3>
+                    <div class="step-number">1</div>
+                    <p class="step-description">
+                        Drop any audio file—MP3, M4A, WAV, AAC, FLAC, or more. Your original quality stays intact, no matter the format.
+                    </p>
+                    <div class="step-visual">
+                        <div class="file-upload-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Choose Background -->
+                <div class="step">
+                    <h3 class="step-title">Choose Your Background</h3>
+                    <div class="step-number">2</div>
+                    <p class="step-description">
+                        Pick from beautiful presets or upload your own. Select multiple backgrounds to create different versions. Videos loop automatically, photos become static backgrounds. Everything scales to perfect 16:9 or 9:16.
+                    </p>
+                    <div class="step-visual">
+                        <div class="background-visual">
+                            <div class="background-option">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8.5,13.5L11,16.5L14.5,12L19,18H5M21,19V5C21,3.89 20.1,3 19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19Z"/>
+                                </svg>
+                            </div>
+                            <div class="background-option">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/>
+                                </svg>
+                            </div>
+                            <div class="background-option selected">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V8H13V6H11M11,10V18H13V10H11Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Convert & Download -->
+                <div class="step">
+                    <h3 class="step-title">Convert & Download</h3>
+                    <div class="step-number">3</div>
+                    <p class="step-description">
+                        Click convert and watch the magic happen. Your video downloads instantly, ready to share anywhere. No waiting, no limits.
+                    </p>
+                    <div class="step-visual">
+                        <div class="convert-visual">
+                            <button class="convert-button">Convert to Video</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- WHO IT'S BUILT FOR SECTION -->
+    <section class="built-for-section">
+        <div class="built-for-container">
+            <!-- Header -->
+            <div class="built-for-header">
+                <h2 class="built-for-title">Who It's Built For</h2>
+                <p class="built-for-subtitle">
+                    Stop wasting hours in video editors just to add a simple image to your audio. AudioToVideo was created for creators who need professional results without the complexity.
+                </p>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="built-for-content">
+                <!-- Left: Rotating User Types -->
+                <div class="user-types-column">
+                    <div class="user-types-list">
+                        <div class="user-type active" data-type="podcasters">
+                            <div class="user-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V8H13V6H11M11,10V18H13V10H11Z"/>
+                                </svg>
+                            </div>
+                            <h4>Podcasters</h4>
+                        </div>
+                        <div class="user-type" data-type="musicians">
+                            <div class="user-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12,3V13.55A4,4 0 0,1 8,9.55A4,4 0 0,1 12,5.55V3M16,2V6.55A4,4 0 0,1 12,10.55V18A4,4 0 0,1 8,14V8A4,4 0 0,1 12,4V2M10,16A2,2 0 0,0 8,18A2,2 0 0,0 10,20A2,2 0 0,0 12,18A2,2 0 0,0 10,16Z"/>
+                                </svg>
+                            </div>
+                            <h4>Musicians</h4>
+                        </div>
+                        <div class="user-type" data-type="content-creators">
+                            <div class="user-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/>
+                                </svg>
+                            </div>
+                            <h4>Content Creators</h4>
+                        </div>
+                        <div class="user-type" data-type="marketers">
+                            <div class="user-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z"/>
+                                </svg>
+                            </div>
+                            <h4>Marketers</h4>
+                        </div>
+                        <div class="user-type" data-type="educators">
+                            <div class="user-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z"/>
+                                </svg>
+                            </div>
+                            <h4>Educators</h4>
+                        </div>
+                        <div class="user-type" data-type="businesses">
+                            <div class="user-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V8H13V6H11M11,10V18H13V10H11Z"/>
+                                </svg>
+                            </div>
+                            <h4>Businesses</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Content Area -->
+                <div class="content-area">
+                    <!-- Podcasters Content -->
+                    <div class="user-content active" data-type="podcasters">
+                        <h3>Perfect for Podcast Creators</h3>
+                        <p>
+                            Convert audio to video on Mac has never been easier for podcasters. You're spending hours in Final Cut Pro or Adobe Premiere just to add your podcast logo to audio files. 
+                            Opening massive video editors for simple tasks like adding a static image background. Loading 
+                            project files, importing audio, creating compositions, rendering exports. It takes forever and 
+                            feels ridiculous for such a basic need.
+                        </p>
+                        <p>
+                            Audio To Video changes everything. Drop your podcast episode audio, pick your show artwork, and get 
+                            a platform-ready video in seconds. No bloated software, no complex workflows, no wasted time. 
+                            Focus on creating great content instead of fighting with video editors. Your audience deserves 
+                            your best work, not your frustration with tools.
+                        </p>
+                        <p>
+                            Whether you're a solo podcaster working from your home studio or managing a network with 
+                            hundreds of episodes, Audio To Video scales with you. Batch process multiple episodes, maintain 
+                            consistent branding across all your content, and publish faster than ever before.
+                        </p>
+                        <p>
+                            Convert audio to video on Mac with professional quality that matches YouTube, Instagram, and TikTok requirements. 
+                            Your podcast episodes get the visual treatment they deserve without the technical hassle. 
+                            Perfect for repurposing audio content across multiple platforms with consistent, branded visuals.
+                        </p>
+                        <p>
+                            Stop losing viewers because your content isn't optimized for video platforms. With Audio To Video, 
+                            every podcast episode becomes instantly shareable as engaging video content that captures attention 
+                            and drives engagement across all your marketing channels.
+                        </p>
+                    </div>
+
+                    <!-- Musicians Content -->
+                    <div class="user-content" data-type="musicians">
+                        <h3>Built for Music Professionals</h3>
+                        <p>
+                            Your music deserves to be heard, not hidden behind complicated video production workflows. 
+                            You're a musician, not a video editor. Why should creating a simple music video require 
+                            learning DaVinci Resolve or After Effects? Those tools are overkill for what you actually need.
+                        </p>
+                        <p>
+                            Convert audio to video on Mac with Audio To Video - the fastest way to create professional music videos. 
+                            Upload your track, choose from beautiful album artwork or create custom visuals, and export 
+                            professional videos instantly. Whether you're promoting a new single, creating teasers for 
+                            upcoming releases, or just need video formats for streaming platforms, we've eliminated the technical barriers.
+                        </p>
+                        <p>
+                            Work at the speed of creativity. No more "I'll do the video later" excuses. No more spending 
+                            weekends learning video software instead of making music. Your fans want to see your art, 
+                            and now they can, without you becoming a video production expert first.
+                        </p>
+                        <p>
+                            Perfect for independent artists, producers, and music creators who need to convert audio to video on Mac quickly. 
+                            From Spotify singles to YouTube music videos, Instagram Reels to TikTok content - Audio To Video 
+                            handles all the technical requirements while you focus on what matters most: your music.
+                        </p>
+                        <p>
+                            Join thousands of musicians who've discovered how simple it can be to convert audio to video on Mac. 
+                            Professional results in minutes, not hours. Your music career deserves tools that match your talent level.
+                        </p>
+                    </div>
+
+                    <!-- Content Creators Content -->
+                    <div class="user-content" data-type="content-creators">
+                        <h3>Made for Content Creators</h3>
+                        <p>
+                            You're drowning in tools. YouTube Studio, CapCut, Adobe Suite, DaVinci Resolve, After Effects. 
+                            Each platform demands different formats, different aspect ratios, different specifications. 
+                            You're spending more time converting files than creating content. It's exhausting.
+                        </p>
+                        <p>
+                            Audio To Video is your secret weapon for effortless audio to video conversion on Mac. One tool that handles everything. 
+                            Convert audio to video with perfect platform optimization. Your long-form interviews, educational content, 
+                            vlogs, and tutorials all get transformed instantly. No more format wars, no more quality loss, no 
+                            more technical headaches.
+                        </p>
+                        <p>
+                            Whether you're building a personal brand, growing a YouTube channel, or creating content for 
+                            clients, Audio To Video lets you focus on what matters: your message. We handle the technical 
+                            complexity so you can concentrate on connecting with your audience and growing your platform.
+                        </p>
+                        <p>
+                            Convert audio to video on Mac with confidence. Every export is optimized for maximum reach and engagement. 
+                            Your content deserves to perform at its best, and with Audio To Video, it always does. From viral 
+                            shorts to in-depth tutorials, we ensure your audio content gets the visual presentation it deserves.
+                        </p>
+                        <p>
+                            Stop letting technical limitations hold back your creative vision. Audio To Video empowers content 
+                            creators to convert audio to video on Mac with professional quality and lightning speed. Your audience 
+                            will never know how easy it was for you to create those perfect videos.
+                        </p>
+                    </div>
+
+                    <!-- Marketers Content -->
+                    <div class="user-content" data-type="marketers">
+                        <h3>Designed for Marketing Teams</h3>
+                        <p>
+                            Your campaigns launch tomorrow, but your audio ads aren't video-ready. Your creative team is 
+                            buried in video editing software trying to add simple backgrounds to voiceovers. You're paying 
+                            premium rates to freelancers for work that should take minutes, not hours. It's inefficient 
+                            and expensive.
+                        </p>
+                        <p>
+                            Audio To Video revolutionizes marketing workflows. Convert audio ads, voiceovers, and soundbites 
+                            to video format instantly. Maintain brand consistency with custom backgrounds and logos. 
+                            Scale your content production without scaling your team or budget.
+                        </p>
+                        <p>
+                            From social media campaigns to TV spots, podcast sponsorships to explainer videos, Audio To Video 
+                            ensures your audio content reaches every platform optimally formatted. No more "we can't use 
+                            this audio because it's not video." Everything becomes video-ready instantly.
+                        </p>
+                        <p>
+                            Convert audio to video on Mac with enterprise-grade reliability. Your marketing team can convert 
+                            audio to video in seconds, not hours. Perfect for agencies handling multiple clients, in-house 
+                            marketing teams managing brand campaigns, or freelancers needing to deliver fast.
+                        </p>
+                        <p>
+                            The ROI is undeniable. What used to cost hundreds in freelance fees or days of internal work 
+                            now takes minutes with Audio To Video. Your team can convert audio to video on Mac and focus 
+                            on strategy and creativity instead of technical busywork. Marketing should be about results, 
+                            not roadblocks.
+                        </p>
+                    </div>
+
+                    <!-- Educators Content -->
+                    <div class="user-content" data-type="educators">
+                        <h3>Created for Educators</h3>
+                        <p>
+                            You're passionate about teaching, not video production. But modern education demands video 
+                            content. You're spending precious time learning complex editing software just to add slides 
+                            or images to your lectures. Your students need your expertise, not your technical struggles.
+                        </p>
+                        <p>
+                            Audio To Video empowers educators everywhere. Transform lecture recordings, interviews, and 
+                            discussions into engaging video content instantly. Add relevant visuals, maintain professional 
+                            presentation standards, and focus on what you do best: teaching.
+                        </p>
+                        <p>
+                            Whether you're creating course content for online platforms, recording guest lectures, or 
+                            producing educational podcasts, Audio To Video makes professional video production accessible. 
+                            Your knowledge deserves to be seen and heard in the best possible format.
+                        </p>
+                        <p>
+                            Convert audio to video on Mac with educational content that captivates and informs. From university 
+                            professors to online course creators, homeschooling parents to corporate trainers - Audio To Video 
+                            ensures your educational content reaches students in the most effective format possible.
+                        </p>
+                        <p>
+                            Join educators worldwide who've discovered the power of converting audio to video on Mac. Your 
+                            teaching deserves to be as visually engaging as it is intellectually stimulating. With Audio 
+                            To Video, every lecture, discussion, and educational audio becomes a compelling video that 
+                            enhances learning and retention.
+                        </p>
+                    </div>
+
+                    <!-- Businesses Content -->
+                    <div class="user-content" data-type="businesses">
+                        <h3>Engineered for Business Efficiency</h3>
+                        <p>
+                            Your company produces mountains of audio content—internal communications, training materials, 
+                            client presentations, marketing assets. Converting them to video format shouldn't require a 
+                            dedicated video production team. It's a bottleneck that slows down your entire organization.
+                        </p>
+                        <p>
+                            Audio To Video integrates seamlessly into business workflows. No training required, no complex 
+                            software to master. Your team can convert audio to video as easily as saving a file. 
+                            Maintain brand standards, ensure consistent quality, and accelerate content distribution 
+                            across all platforms.
+                        </p>
+                        <p>
+                            From corporate communications to training departments, sales teams to marketing agencies, 
+                            Audio To Video eliminates technical barriers and democratizes video content creation. Your 
+                            business moves faster when technology gets out of the way.
+                        </p>
+                        <p>
+                            Convert audio to video on Mac with enterprise-grade performance and security. Perfect for businesses 
+                            that need to convert audio to video at scale. Whether you're creating training videos for employees, 
+                            marketing content for customers, or internal communications - Audio To Video handles it all 
+                            with professional quality and lightning speed.
+                        </p>
+                        <p>
+                            The productivity gains are massive. What used to take hours or days of video editing work can now 
+                            be accomplished in minutes. Your team can convert audio to video on Mac and redirect their valuable 
+                            time toward high-impact business activities. Technology should serve your business goals, not 
+                            hinder them.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAC AUDIO PERFORMANCE ENGINE SECTION -->
+    <section class="mac-performance-section">
+        <div class="mac-performance-container">
+            <!-- Header -->
+            <div class="mac-performance-header">
+                <h2 class="mac-performance-title">Mac Audio Performance Engine</h2>
+                <p class="mac-performance-subtitle">
+                    Leveraging Apple's professional audio architecture for unprecedented speed and efficiency. When milliseconds matter in your workflow.
+                </p>
+            </div>
+
+            <!-- Performance Features Grid -->
+            <div class="performance-features-grid">
+                <!-- Feature 1: Hardware Acceleration -->
+                <div class="performance-feature">
+                    <div class="performance-feature-visual">
+                        <div class="hardware-diagram">
+                            <div class="chip-core"></div>
+                            <div class="gpu-beams">
+                                <div class="beam beam-1"></div>
+                                <div class="beam beam-2"></div>
+                                <div class="beam beam-3"></div>
+                                <div class="beam beam-4"></div>
+                            </div>
+                            <div class="processing-indicator">GPU Accelerated</div>
+                        </div>
+                    </div>
+                    <h3 class="performance-feature-title">Hardware-Accelerated Processing</h3>
+                    <p class="performance-feature-description">
+                        Every Mac chip packs serious processing power. AudioToVideo harnesses your M-Series or Intel CPU and GPU cores simultaneously, delivering conversion speeds that outpace real-time playback. Faster than importing into video editors, faster than cloud processing.
+                    </p>
+                </div>
+
+                <!-- Feature 2: Optimized Workflows -->
+                <div class="performance-feature">
+                    <div class="performance-feature-visual">
+                        <div class="workflow-timeline">
+                            <div class="timeline-point active" data-step="1">
+                                <span class="point-label">Drop</span>
+                            </div>
+                            <div class="timeline-connector"></div>
+                            <div class="timeline-point" data-step="2">
+                                <span class="point-label">Process</span>
+                            </div>
+                            <div class="timeline-connector"></div>
+                            <div class="timeline-point" data-step="3">
+                                <span class="point-label">Export</span>
+                            </div>
+                        </div>
+                        <div class="speed-indicator">Sub-Real-Time</div>
+                    </div>
+                    <h3 class="performance-feature-title">Professional Workflow Optimization</h3>
+                    <p class="performance-feature-description">
+                        Streamlined for the workflows audio pros actually use. Direct file processing, intelligent format detection, automatic aspect ratio scaling. No setup wizards, no complex configurations—just drag, convert, deploy. The efficiency post-production demands.
+                    </p>
+                </div>
+
+                <!-- Feature 3: Enterprise Scalability -->
+                <div class="performance-feature">
+                    <div class="performance-feature-visual">
+                        <div class="scalability-graph">
+                            <div class="graph-bars">
+                                <div class="graph-bar" style="height: 40%;"><span>1 File</span></div>
+                                <div class="graph-bar active" style="height: 80%;"><span>10 Files</span></div>
+                                <div class="graph-bar" style="height: 60%;"><span>50 Files</span></div>
+                                <div class="graph-bar" style="height: 90%;"><span>100+ Files</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="performance-feature-title">Enterprise-Grade Scalability</h3>
+                    <p class="performance-feature-description">
+                        Podcast networks, music labels, content factories—AudioToVideo scales with your operation. Process entire episode catalogs or album releases in batch. Maintains consistent output quality regardless of scale. The backbone infrastructure audio businesses need.
+                    </p>
+                </div>
+
+                <!-- Feature 4: Preview & Refinement -->
+                <div class="performance-feature">
+                    <div class="performance-feature-visual">
+                        <div class="preview-interface">
+                            <div class="video-preview">
+                                <div class="playhead-line"></div>
+                                <div class="waveform-preview">
+                                    <div class="mini-spectrum"></div>
+                                </div>
+                            </div>
+                            <div class="control-buttons">
+                                <div class="preview-btn">Preview</div>
+                                <div class="adjust-btn">Refine</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="performance-feature-title">Instant Preview & Refinement</h3>
+                    <p class="performance-feature-description">
+                        Professional tools demand instant feedback. Preview your conversions before export, fine-tune aspect ratios, test different backgrounds. Make decisions at professional speed rather than waiting for full renders. Precision control when you need it most.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Performance Benchmark Statement -->
+            <div class="performance-benchmark">
+                <div class="benchmark-content">
+                    <div class="performance-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13,2.05V4.05C17.39,4.59 20.5,8.58 19.96,12.97C19.5,16.61 16.64,19.5 13,19.93V21.93C18.5,21.38 22.5,16.5 21.95,11C21.5,6.25 17.73,2.5 13,2.05M12,2C10.9,2 10,2.9 10,4V6H14V4C14,2.9 13.11,2 12,2Z"/>
+                        </svg>
+                    </div>
+                    <div class="benchmark-text">
+                        <h3>Industry-Leading Performance Standards</h3>
+                        <p>
+                            AudioToVideo sets the benchmark for audio-to-video conversion on Mac. Powered by Apple's professional frameworks,
+                            it delivers the speed, reliability, and precision that serious audio work demands. When you're converting
+                            hours of content daily, every second saved compounds into real productivity gains you can measure.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE CORE PROBLEM SECTION -->
+    <section class="core-problem-section">
+        <div class="core-problem-container">
+            <!-- Header -->
+            <div class="core-problem-header">
+                <h1 class="core-problem-title">The Core Problem</h1>
+            </div>
+
+            <!-- Problem Content -->
+            <div class="core-problem-content">
+                <blockquote>
+                    <p>
+                        "Converting audio to video should be a very simple problem to solve, but almost every professional today does it in a sort of workaround fashion.<br><br>
+                        From the second they open the editing window, they know what they want to do: put X audio under Y media.<br><br>
+                        Still, they have to drag-and-drop both files into the timeline, adjust the positioning, and go through export settings.<br><br>
+                        This is time consuming enough for one conversion, but for multiple it is really not ideal.<br><br>
+                        Audio To Video was created to solve this to reduce the friction between audio creation and upload to platforms that do not allow audio file uploads."
+                    </p>
+                    <p class="founder-signature">
+                        - Johan Tidemann Esbjug<br>
+                        Developer
+                    </p>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAC AUDIO WORKFLOW REVOLUTION SECTION -->
+    <section class="workflow-revolution-section">
+        <div class="workflow-revolution-container">
+            <!-- Header -->
+            <div class="workflow-revolution-header">
+                <h2 class="workflow-revolution-title">Mac Audio Workflow Revolution</h2>
+                <p class="workflow-revolution-subtitle">
+                    Every Mac audio professional knows the frustration: pristine audio created in Logic Studio or Pro Tools, then shipped to Final Cut, After Effects, or Adobe Premiere just to add a simple image background. Hours wasted on basic tasks that should take seconds.
+                </p>
+            </div>
+
+            <!-- Process Comparison -->
+            <div class="process-comparison">
+                <!-- Before Column -->
+                <div class="comparison-column before-column">
+                    <div class="column-header">
+                        <h3 class="column-title">❌ Traditional Workflow</h3>
+                        <div class="process-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <span class="step-text">Export final audio from Logic Pro</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <span class="step-text">Open Final Cut Pro or Adobe</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <span class="step-text">Import audio file (10+ minutes for large files)</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                <span class="step-text">Create new project, set sequence settings</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">5</span>
+                                <span class="step-text">Add background image/video to timeline</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">6</span>
+                                <span class="step-text">Adjust sizing, positioning, timing (fiddling)</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">7</span>
+                                <span class="step-text">Choose export settings, render (more waiting)</span>
+                            </div>
+                        </div>
+                        <div class="time-cost">
+                            <div class="time-badge">~45-90 minutes</div>
+                            <div class="frustration-note">Frustrating • Error-prone • Time-wasting</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="comparison-arrow">
+                    <svg width="60" height="40" viewBox="0 0 60 40" fill="none">
+                        <path d="M5 20h50M45 10l10 10-10 10" stroke="#667eea" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <!-- After Column -->
+                <div class="comparison-column after-column">
+                    <div class="column-header">
+                        <h3 class="column-title">✅ AudioToVideo Workflow</h3>
+                        <div class="process-steps">
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                <span class="step-text">Complete your audio production in Logic Pro</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                <span class="step-text">Drag audio file to AudioToVideo</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                <span class="step-text">Choose background from presets or upload</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                <span class="step-text">Click convert (backgrounds auto-size)</span>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">5</span>
+                                <span class="step-text">Download professional video instantly</span>
+                            </div>
+                        </div>
+                        <div class="time-cost">
+                            <div class="time-badge">~3 minutes</div>
+                            <div class="frustration-note">Seamless • Reliable • Time-saving</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revolution Benefits -->
+            <div class="revolution-benefits">
+                <div class="benefits-grid">
+                    <!-- Benefit 1 -->
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2M13.59,11.59L16.18,10.42L12,8.58L7.82,10.42L10.41,11.59V15V16H13.59V11.59M16.18,13.58L18,14.58V13.58L16.18,13.58Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="benefit-title">Native Mac Integration</h4>
+                        <p class="benefit-description">
+                            Built specifically for macOS, integrates perfectly with your existing Logic Pro, Pro Tools, and Final Cut workflow without breaking your creative flow.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 2 -->
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.54L3.44,9.22L1,12L3.44,14.78L3.1,18.46L6.71,19.28L8.6,22.46L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="benefit-title">Professional Quality Preserved</h4>
+                        <p class="benefit-description">
+                            Zero compression means your mastered audio stays pristine. No re-encoding artifacts, no quality loss, no compromise on your professional standards.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 3 -->
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10,4V8H14V4H10M16,4V8H20V4H16M16,10V14H20V10H16M16,16V20H20V16H16M10,16V20H14V16H10M4,16V20H8V16H4M4,10V14H8V10H4M4,4V8H8V4H4M16,2H10A2,2 0 0,0 8,4V8A2,2 0 0,0 10,10H14A2,2 0 0,0 16,8V4A2,2 0 0,0 14,2M8,14H2A2,2 0 0,0 0,16V20A2,2 0 0,0 2,22H8A2,2 0 0,0 10,20V16A2,2 0 0,0 8,14Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="benefit-title">Batch Processing Power</h4>
+                        <p class="benefit-description">
+                            Process entire podcast seasons, music catalogs, or lecture series simultaneously. Maintains consistent branding and technical specs across all outputs.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 4 -->
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M11,6V8H13V6H11M11,10V18H13V10H11Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="benefit-title">Universal Format Support</h4>
+                        <p class="benefit-description">
+                            MP3, AAC, WAV, FLAC, M4A, AIFF, OGG, WMA—whatever format you export from your DAW, AudioToVideo handles it expertly without conversion headaches.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 5 -->
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M13.09,8.26L15.23,10.4L11,14L9.28,11.69L11.14,9.83L13.09,8.26M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="benefit-title">Instant Background Options</h4>
+                        <p class="benefit-description">
+                            Beautiful curated presets that match your brand aesthetic, plus the flexibility to upload custom backgrounds—videos, photos, or graphics—that loop seamlessly.
+                        </p>
+                    </div>
+
+                    <!-- Benefit 6 -->
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M13,2.05V4.05C17.39,4.59 20.5,8.58 19.96,12.97C19.5,16.61 16.64,19.5 13,19.93V21.93C18.5,21.38 22.5,16.5 21.95,11C21.5,6.25 17.73,2.5 13,2.05M12,2C10.9,2 10,2.9 10,4V6H14V4C14,2.9 13.11,2 12,2Z"/>
+                            </svg>
+                        </div>
+                        <h4 class="benefit-title">Mac Performance Optimized</h4>
+                        <p class="benefit-description">
+                            Leverages Apple's Metal graphics framework and native APIs for hardware-accelerated encoding that rivals professional video production tools in speed and quality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quality Matching Explanation -->
+            <div class="quality-matching-section">
+                <div class="quality-matching-container">
+                    <!-- Header -->
+                    <div class="quality-matching-header">
+                        <h3 class="quality-matching-title">Intelligent Quality Matching</h3>
+                        <p class="quality-matching-subtitle">
+                            For video professionals, quality control is paramount. AudioToVideo handles this intelligently at its foundation.
+                        </p>
+                    </div>
+
+                    <!-- Quality Details -->
+                    <div class="quality-details">
+                        <!-- Audio Quality -->
+                        <div class="quality-card audio-quality">
+                            <div class="quality-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"/>
+                                    <path d="M12,8.14V6A6,6 0 0,0 6,12H8A4,4 0 0,1 12,8.14Z"/>
+                                    <circle cx="12" cy="12" r="1"/>
+                                </svg>
+                            </div>
+                            <h4>Audio Quality: True Zero Loss</h4>
+                            <p>
+                                When you only use audio, AudioToVideo operates as a pure video wrapper. The original audio file remains untouched—100% of your
+                                mastered audio quality is preserved. No re-encoding, no compression artifacts, no quality degradation. What goes in stays perfect.
+                            </p>
+                        </div>
+
+                        <!-- Smart Quality Balance -->
+                        <div class="quality-card smart-balance">
+                            <div class="quality-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7,3H17A2,2 0 0,1 19,5V21L12,18L5,21V5A2,2 0 0,1 7,3M7,5V17L12,15L17,17V5H7Z"/>
+                                </svg>
+                            </div>
+                            <h4>Media Balance: File Size respected</h4>
+                            <p>
+                                AudioToVideo natively respects file size considerations. If your audio bitrate is 128kbps, the video container automatically
+                                optimizes to complement that quality level. No bloated files, no unnecessary overhead. Quality feels right for the content size.
+                            </p>
+                        </div>
+
+                        <!-- Video Quality Matching -->
+                        <div class="quality-card video-matching">
+                            <div class="quality-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17,10.5V7A1,1 0 0,0 16,6H4A1,1 0 0,0 3,7V17A1,1 0 0,0 4,18H16A1,1 0 0,0 17,17V13.5L21,17.5V6.5L17,10.5Z"/>
+                                </svg>
+                            </div>
+                            <h4>Video Backdrop Quality</h4>
+                            <p>
+                                When using custom video backgrounds, AudioToVideo analyzes the video's native bitrate and matches the output to deliver
+                                optimal viewing quality. Your custom visuals shine at their intended quality level, creating a perfect balance between
+                                your precious audio and custom video elements.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Quality Standards Note -->
+                    <div class="quality-standards">
+                        <div class="standards-content">
+                            <div class="standards-text">
+                                <h4>Professional Standards Maintained</h4>
+                                <p>
+                                    Built for creators who demand the highest quality standards. Whether you're mastering for Spotify at 320kbps or
+                                    exporting for YouTube distribution, AudioToVideo maintains the integrity of your audio while delivering
+                                    visually compelling results that meet platform requirements.
+                                </p>
+                            </div>
+                            <div class="quality-badge">
+                                <span>128-320 kbps</span>
+                                <span>Lossless Quality</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="workflow-cta">
+                <p class="workflow-cta-text">
+                    Stop wasting hours in bloated video editors for simple audio tasks. Join the Mac audio professionals who've streamlined their workflow with AudioToVideo.
+                </p>
+                <div class="workflow-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">90%</span>
+                        <span class="stat-label">Time Saved</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Quality Preserved</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">∞</span>
+                        <span class="stat-label">Audio Length</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM CHECKOUT SECTION -->
+    <section class="premium-section">
+        <div class="premium-container">
+            <!-- Header -->
+            <div class="premium-header">
+                <h2 class="premium-title">Premium Audio To Video</h2>
+                <p class="premium-subtitle">Skip the trial and get premium access now. You know this is what you need.</p>
+            </div>
+
+            <!-- Pricing Card -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-amount">
+                        <span class="currency">$</span>
+                        <span class="amount">42</span>
+                        <span class="period">one-time</span>
+                    </div>
+                    <div class="pricing-description">Complete professional audio-to-video conversion</div>
+                </div>
+
+                <!-- Feature List -->
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="checkmark">✓</div>
+                        <span>Zero quality loss audio conversion</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="checkmark">✓</div>
+                        <span>Batch processing - convert hundreds of files</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="checkmark">✓</div>
+                        <span>Hardware-accelerated Mac performance</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="checkmark">✓</div>
+                        <span>All major audio formats supported (MP3, M4A, WAV, AAC, FLAC, OGG, WMA, AIFF)</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="checkmark">✓</div>
+                        <span>Custom video backgrounds (upload your own)</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="checkmark">✓</div>
+                        <span>Multiple aspect ratios (16:9 and 9:16)</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="checkmark">✓</div>
+                        <span>Instant downloads and exports</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="checkmark">✓</div>
+                        <span>No watermarks or limitations</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="checkmark">✓</div>
+                        <span>Native Mac optimization (M-Series & Intel)</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="checkmark">✓</div>
+                        <span>Lifetime updates and support</span>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="pricing-cta">
+                    <button class="premium-btn">
+                        <span class="btn-text">Buy Now - $42</span>
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12,4L14,6L10,10L11,11L15,7L13,5L8,10L10,12L15,7L13,5L12,6V4Z"/>
+                        </svg>
+                    </button>
+                    <div class="security-note">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
+                        </svg>
+                        Secure checkout • Instant download
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guarantee -->
+            <div class="guarantee">
+                <div class="guarantee-content">
+                    <div class="guarantee-icon">🛡️</div>
+                    <div class="guarantee-text">
+                        <h3>30-Day Money Back Guarantee</h3>
+                        <p>Not satisfied for any reason? Get a full refund within 30 days. No questions asked.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <!-- Header -->
+            <div class="faq-header">
+                <h2 class="faq-title">Frequently Asked Questions</h2>
+                <p class="faq-subtitle">
+                    Everything you need to know about converting audio to video on Mac.
+                </p>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="faq-accordion">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Is my audio quality preserved?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        Absolutely. AudioToVideo uses <span class="faq-highlight">zero compression</span> and preserves your original bitrate (128-320kbps). No quality loss, no re-encoding—just pure audio in video format.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        What audio formats are supported?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        All major formats: MP3, M4A, WAV, AAC, FLAC, OGG, WMA, AIFF. We detect and preserve your audio's original quality regardless of format.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Can I use my own videos or images?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        Yes! Upload custom videos (they loop automatically) or photos (displayed as static backgrounds). Everything scales perfectly to 16:9 or 9:16 aspect ratios.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        How long can my audio files be?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        Unlimited. From 3-second clips to 3-hour podcasts—AudioToVideo intelligently loops your background visuals to match any audio duration.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        Is it really free with no watermarks?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        Yes. 7-day free trial, then optional subscription. No watermarks, no credit card required to start, and no limits during your trial period.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">
+                        What Mac systems does it work on?
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        macOS 12.0 or later. Optimized for both Intel and Apple Silicon Macs. Uses native Mac technologies for maximum performance.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* MAC AUDIO WORKFLOW REVOLUTION SECTION */
+        .workflow-revolution-section {
+            padding: 140px 20px;
+            background: #f8f9fa;
+            position: relative;
+        }
+
+        .workflow-revolution-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .workflow-revolution-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .workflow-revolution-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        .workflow-revolution-subtitle {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #6e6e73;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* Process Comparison */
+        .process-comparison {
+            display: grid;
+            grid-template-columns: 2fr 60px 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 80px;
+            align-items: stretch;
+        }
+
+        .comparison-column {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px 20px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .before-column {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.03) 0%, rgba(220, 38, 38, 0.01) 100%);
+            border: 1px solid rgba(239, 68, 68, 0.08);
+            grid-column: 1;
+        }
+
+        .after-column {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.03) 0%, rgba(22, 163, 74, 0.01) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.08);
+            grid-column: 3;
+        }
+
+        .comparison-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            grid-column: 2;
+        }
+
+        .column-header {
+            margin-bottom: 20px;
+        }
+
+        .column-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+        }
+
+        .before-column .column-title {
+            color: #dc2626;
+        }
+
+        .after-column .column-title {
+            color: #16a34a;
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: #667eea;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .before-column .step-number {
+            background: rgba(220, 38, 38, 0.15);
+            color: #dc2626;
+        }
+
+        .after-column .step-number {
+            background: rgba(34, 197, 94, 0.15);
+            color: #16a34a;
+        }
+
+        .step-text {
+            font-size: 13px;
+            line-height: 1.3;
+            color: #6e6e73;
+            font-weight: 500;
+            margin: 0;
+            max-width: 180px;
+        }
+
+        /* Revolution Benefits */
+        .revolution-benefits {
+            margin-bottom: 80px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+        }
+
+        .benefit-card {
+            text-align: center;
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            margin: 0 auto 24px;
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.3);
+        }
+
+        .benefit-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+        }
+
+        .benefit-description {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #6e6e73;
+            font-weight: 400;
+        }
+
+        /* Bottom CTA */
+        .workflow-cta {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .workflow-cta-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
+        }
+
+        .workflow-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #667eea;
+            display: block;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #6e6e73;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* QUALITY MATCHING EXPLANATION */
+        .quality-matching-section {
+            background: #ffffff;
+            border-radius: 16px;
+            margin-bottom: 80px;
+            padding: 60px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .quality-matching-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .quality-matching-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .quality-matching-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+        }
+
+        .quality-matching-subtitle {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #6e6e73;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .quality-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .quality-card {
+            background: rgba(102, 126, 234, 0.02);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            position: relative;
+        }
+
+        .audio-quality,
+        .smart-balance,
+        .video-matching {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(22, 163, 74, 0.02) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.1);
+        }
+
+        .audio-quality .quality-icon {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .smart-balance .quality-icon {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .video-matching .quality-icon {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+
+        .quality-card h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+        }
+
+        .quality-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #6e6e73;
+            margin: 0;
+        }
+
+        .quality-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .quality-standards {
+            background: rgba(102, 126, 234, 0.02);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        .standards-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .standards-text h4 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1d1d1f;
+        }
+
+        .standards-text p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #6e6e73;
+            margin: 0;
+        }
+
+        .quality-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            min-height: 60px;
+            padding: 16px;
+        }
+
+        .quality-badge span {
+            font-size: 14px;
+            font-weight: 700;
+            color: #667eea;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .process-comparison {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .comparison-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .workflow-revolution-section {
+                padding: 80px 20px;
+            }
+
+            .workflow-revolution-title {
+                font-size: 36px;
+            }
+
+            .workflow-revolution-subtitle {
+                font-size: 16px;
+            }
+
+            .workflow-revolution-header {
+                margin-bottom: 60px;
+            }
+
+            .process-comparison {
+                gap: 40px;
+                margin-bottom: 80px;
+            }
+
+            .comparison-column {
+                padding: 32px 24px;
+            }
+
+            .column-title {
+                font-size: 24px;
+            }
+
+            .step {
+                gap: 12px;
+            }
+
+            .step-text {
+                font-size: 15px;
+            }
+
+            .time-cost {
+                padding: 20px;
+            }
+
+            .time-badge {
+                font-size: 18px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .benefit-icon {
+                width: 64px;
+                height: 64px;
+            }
+
+            .benefit-title {
+                font-size: 18px;
+            }
+
+            .benefit-description {
+                font-size: 15px;
+            }
+
+            .workflow-cta {
+                padding: 40px 20px;
+            }
+
+            .workflow-cta-text {
+                font-size: 20px;
+            }
+
+            .workflow-stats {
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .stat-value {
+                font-size: 28px;
+            }
+        }
+
+        /* THE CORE PROBLEM SECTION */
+        .core-problem-section {
+            padding: 140px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .core-problem-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .core-problem-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .core-problem-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .core-problem-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+
+        .core-problem-content blockquote {
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: normal;
+            color: #ffffff;
+            font-size: 18px;
+            line-height: 1.6;
+            border-left: none;
+            padding-left: 0;
+            margin-top: 40px;
+        }
+
+        .core-problem-content .founder-signature {
+            margin-top: 32px;
+            text-align: right;
+            font-style: normal;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px;
+        }
+
+        .problem-card {
+            position: relative;
+        }
+
+        .problem-visual {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(102, 126, 234, 0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(102, 126, 234, 0.05);
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            color: #667eea;
+            opacity: 0.8;
+        }
+
+        .problem-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+        }
+
+        .problem-description {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #6e6e73;
+            font-weight: 400;
+        }
+
+        .problem-description + .problem-description {
+            margin-top: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .core-problem-section {
+                padding: 80px 20px;
+            }
+
+            .core-problem-title {
+                font-size: 36px;
+            }
+
+            .core-problem-subtitle {
+                font-size: 16px;
+            }
+
+            .core-problem-header {
+                margin-bottom: 60px;
+            }
+
+            .problems-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .problem-visual {
+                height: 100px;
+            }
+
+            .problem-title {
+                font-size: 24px;
+                margin-bottom: 16px;
+            }
+
+            .problem-description {
+                font-size: 16px;
+            }
+        }
+
+        /* MAC AUDIO PERFORMANCE ENGINE SECTION */
+        .mac-performance-section {
+            padding: 140px 20px;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mac-performance-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(102, 126, 234, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(102, 126, 234, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .mac-performance-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mac-performance-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .mac-performance-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        .mac-performance-subtitle {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #6e6e73;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .performance-features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px;
+            margin-bottom: 100px;
+        }
+
+        .performance-feature {
+            text-align: center;
+        }
+
+        .performance-feature-visual {
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            position: relative;
+            background: rgba(102, 126, 234, 0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(102, 126, 234, 0.05);
+        }
+
+        /* Hardware Acceleration Visual */
+        .hardware-diagram {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 120px;
+        }
+
+        .chip-core {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+            animation: core-pulse 2s ease-in-out infinite;
+        }
+
+        .gpu-beams {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .beam {
+            position: absolute;
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(180deg, transparent, #667eea, transparent);
+            animation: beam-flash 1.5s ease-in-out infinite;
+        }
+
+        .beam-1 {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(0deg);
+            animation-delay: 0s;
+        }
+
+        .beam-2 {
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%) rotate(90deg);
+            animation-delay: 0.3s;
+        }
+
+        .beam-3 {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(180deg);
+            animation-delay: 0.6s;
+        }
+
+        .beam-4 {
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%) rotate(-90deg);
+            animation-delay: 0.9s;
+        }
+
+        @keyframes core-pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes beam-flash {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .processing-indicator {
+            position: absolute;
+            bottom: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 4px 8px;
+            border-radius: 12px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        /* Workflow Timeline Visual */
+        .workflow-timeline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            position: relative;
+        }
+
+        .timeline-point {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-point.active {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            animation: point-glow 2s ease-in-out infinite;
+        }
+
+        .point-label {
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .timeline-connector {
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+        }
+
+        .timeline-connector::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            animation: flow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes point-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(102, 126, 234, 0); }
+        }
+
+        @keyframes flow {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(0%); }
+        }
+
+        .speed-indicator {
+            font-size: 12px;
+            font-weight: 600;
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+            padding: 4px 8px;
+            border-radius: 12px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            margin-top: 12px;
+        }
+
+        /* Scalability Graph Visual */
+        .scalability-graph {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 12px;
+            height: 120px;
+        }
+
+        .graph-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+        }
+
+        .graph-bar {
+            width: 40px;
+            background: rgba(102, 126, 234, 0.2);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            min-height: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .graph-bar.active {
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+        }
+
+        .graph-bar span {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            color: #6e6e73;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .graph-bar.active span {
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        /* Preview Interface Visual */
+        .preview-interface {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .video-preview {
+            width: 100px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .playhead-line {
+            position: absolute;
+            top: 0;
+            left: 30%;
+            width: 2px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            animation: playhead-move 3s linear infinite;
+        }
+
+        .waveform-preview {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            opacity: 0.7;
+        }
+
+        .mini-spectrum {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 2px;
+        }
+
+        .mini-spectrum::before {
+            content: '';
+            flex: 1;
+            background: rgba(255, 255, 255, 0.6);
+            margin: 0 1px;
+            animation: mini-wave 1.2s ease-in-out infinite;
+        }
+
+        @keyframes playhead-move {
+            0% { left: 0%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes mini-wave {
+            0%, 100% { transform: scaleY(0.3); }
+            50% { transform: scaleY(1); }
+        }
+
+        .control-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .preview-btn,
+        .adjust-btn {
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .preview-btn {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .adjust-btn {
+            background: rgba(118, 75, 162, 0.1);
+            color: #764ba2;
+            border: 1px solid rgba(118, 75, 162, 0.2);
+        }
+
+        .performance-feature-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+        }
+
+        .performance-feature-description {
+            font-size: 17px;
+            line-height: 1.5;
+            color: #6e6e73;
+            font-weight: 400;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Performance Benchmark */
+        .performance-benchmark {
+            text-align: center;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.02) 0%, rgba(118, 75, 162, 0.02) 100%);
+            border-radius: 24px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .benchmark-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .performance-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            flex-shrink: 0;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+        }
+
+        .benchmark-text h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+            line-height: 1.3;
+        }
+
+        .benchmark-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #6e6e73;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mac-performance-section {
+                padding: 80px 20px;
+            }
+
+            .mac-performance-title {
+                font-size: 36px;
+            }
+
+            .mac-performance-subtitle {
+                font-size: 16px;
+            }
+
+            .mac-performance-header {
+                margin-bottom: 60px;
+            }
+
+            .performance-features-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                margin-bottom: 60px;
+            }
+
+            .performance-feature-visual {
+                height: 160px;
+            }
+
+            .benchmark-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                padding: 40px 20px;
+            }
+
+            .performance-icon {
+                width: 56px;
+                height: 56px;
+            }
+
+            .benchmark-text h3 {
+                font-size: 24px;
+            }
+
+            .benchmark-text p {
+                font-size: 16px;
+            }
+
+            .scalability-graph {
+                height: 100px;
+            }
+
+            .graph-bar {
+                width: 32px;
+            }
+
+            .workflow-timeline {
+                transform: scale(0.8);
+            }
+        }
+
+        /* PREMIUM CHECKOUT SECTION */
+        .premium-section {
+            padding: 140px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .premium-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .premium-header {
+            margin-bottom: 60px;
+        }
+
+        .premium-title {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #ffffff;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .premium-subtitle {
+            font-size: 20px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 60px 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .pricing-header {
+            margin-bottom: 40px;
+        }
+
+        .pricing-badge {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+
+        .pricing-amount {
+            margin-bottom: 12px;
+        }
+
+        .currency {
+            font-size: 24px;
+            font-weight: 600;
+            color: #667eea;
+            margin-right: 4px;
+        }
+
+        .amount {
+            font-size: 72px;
+            font-weight: 800;
+            color: #1d1d1f;
+            line-height: 1;
+        }
+
+        .period {
+            font-size: 18px;
+            font-weight: 500;
+            color: #6e6e73;
+            margin-left: 8px;
+        }
+
+        .pricing-description {
+            font-size: 16px;
+            color: #6e6e73;
+            font-weight: 500;
+        }
+
+        .features-list {
+            text-align: left;
+            margin-bottom: 48px;
+            padding: 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #1d1d1f;
+            font-weight: 500;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .pricing-cta {
+            margin-bottom: 32px;
+        }
+
+        .premium-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            border: none;
+            padding: 20px 48px;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .premium-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-text {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .btn-arrow {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .premium-btn:hover .btn-arrow {
+            transform: translateX(4px);
+        }
+
+        .security-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .security-note svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .guarantee {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .guarantee-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .guarantee-icon {
+            font-size: 32px;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        .guarantee-text h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .guarantee-text p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .premium-section {
+                padding: 100px 20px;
+            }
+
+            .premium-title {
+                font-size: 32px;
+            }
+
+            .premium-subtitle {
+                font-size: 16px;
+            }
+
+            .pricing-card {
+                padding: 40px 24px;
+            }
+
+            .amount {
+                font-size: 56px;
+            }
+
+            .features-list {
+                text-align: center;
+            }
+
+            .feature-item {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .premium-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 18px 32px;
+            }
+
+            .guarantee-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+
+            .guarantee-icon {
+                font-size: 28px;
+            }
+        }
+    </style>
+
+    <script>
+        function toggleFAQ(button) {
+            const faqItem = button.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't already active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Auto-rotating user types
+        let currentUserType = 0;
+        let autoRotateInterval;
+        let userHasClicked = false;
+        const userTypes = document.querySelectorAll('.user-type');
+        const userContents = document.querySelectorAll('.user-content');
+        const totalTypes = userTypes.length;
+
+        function switchUserType(index) {
+            // Add loading animation to the button
+            userTypes[index].classList.add('loading');
+            
+            // Remove active class from all after a brief delay for animation
+            setTimeout(() => {
+                userTypes.forEach(type => type.classList.remove('active'));
+                userContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to current
+                userTypes[index].classList.add('active');
+                userContents[index].classList.add('active');
+                
+                // Remove loading animation
+                userTypes[index].classList.remove('loading');
+                
+                currentUserType = index;
+            }, 300);
+        }
+
+        function startAutoRotate() {
+            if (!userHasClicked) {
+                autoRotateInterval = setInterval(() => {
+                    const nextIndex = (currentUserType + 1) % totalTypes;
+                    switchUserType(nextIndex);
+                }, 8000);
+            }
+        }
+
+        function stopAutoRotate() {
+            if (autoRotateInterval) {
+                clearInterval(autoRotateInterval);
+                autoRotateInterval = null;
+            }
+        }
+
+        // Start auto-rotation initially
+        startAutoRotate();
+
+        // Manual switching on click
+        userTypes.forEach((type, index) => {
+            type.addEventListener('click', () => {
+                userHasClicked = true;
+                stopAutoRotate();
+                switchUserType(index);
+            });
+        });
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
