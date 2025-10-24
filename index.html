@@ -705,7 +705,6 @@
             animation: stepSlideIn 0.8s ease-out backwards;
             display: flex;
             flex-direction: column;
-            min-height: 200px;
             justify-content: flex-start; /* Changed from center to flex-start */
             align-items: center; /* Ensure proper centering */
             padding: 0 20px; /* Add padding for better spacing */
@@ -1686,12 +1685,12 @@
                     </div>
                 </div>
 
-                <!-- Step 3: Convert & Download -->
+                <!-- Step 3: Convert & Export -->
                 <div class="step">
-                    <h3 class="step-title">Convert & Download</h3>
+                    <h3 class="step-title">Convert & Export</h3>
                     <div class="step-number">3</div>
                     <p class="step-description">
-                        Click convert and watch the magic happen. Your video downloads instantly, ready to share anywhere. No waiting, no limits.
+                        Click convert and watch the magic happen. Your video exports instantly, ready to share anywhere. No waiting, no limits.
                     </p>
                     <div class="step-visual">
                         <div class="convert-visual">
@@ -2125,84 +2124,62 @@
             </div>
 
             <!-- Process Comparison -->
-            <div class="process-comparison">
-                <!-- Before Column -->
-                <div class="comparison-column before-column">
-                    <div class="column-header">
-                        <h3 class="column-title">❌ Traditional Workflow</h3>
-                        <div class="process-steps">
-                            <div class="step">
-                                <span class="step-number">1</span>
-                                <span class="step-text">Export final audio from Logic Pro</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">2</span>
-                                <span class="step-text">Open Final Cut Pro or Adobe</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">3</span>
-                                <span class="step-text">Import audio file (10+ minutes for large files)</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">4</span>
-                                <span class="step-text">Create new project, set sequence settings</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">5</span>
-                                <span class="step-text">Add background image/video to timeline</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">6</span>
-                                <span class="step-text">Adjust sizing, positioning, timing (fiddling)</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">7</span>
-                                <span class="step-text">Choose export settings, render (more waiting)</span>
-                            </div>
+            <div class="workflow-comparison-animated">
+                <div class="workflow-header">
+                    <button class="workflow-toggle" id="workflowToggle">
+                        <span class="toggle-label traditional">Traditional Workflow</span>
+                        <div class="toggle-switch">
+                            <div class="toggle-slider"></div>
                         </div>
-                        <div class="time-cost">
-                            <div class="time-badge">~45-90 minutes</div>
-                            <div class="frustration-note">Frustrating • Error-prone • Time-wasting</div>
+                        <span class="toggle-label audiotovideo">AudioToVideo</span>
+                    </button>
+                </div>
+
+                <div class="workflow-steps-container">
+                    <!-- Traditional Workflow Steps (all red) -->
+                    <div class="traditional-workflow">
+                        <div class="workflow-step">
+                            <span class="step-text">Open Final Cut Pro or Adobe Premiere</span>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-text">Create new project and configure settings</span>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-text">Import audio file to project</span>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-text">Drag audio to timeline</span>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-text">Import background image or video</span>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-text">Choose or create background media</span>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-text">Add background to timeline</span>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-text">Adjust sizing and positioning</span>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-text">Sync audio and video timing</span>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-text">Configure export settings and render</span>
                         </div>
                     </div>
-                </div>
 
-                <!-- Arrow -->
-                <div class="comparison-arrow">
-                    <svg width="60" height="40" viewBox="0 0 60 40" fill="none">
-                        <path d="M5 20h50M45 10l10 10-10 10" stroke="#667eea" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-
-                <!-- After Column -->
-                <div class="comparison-column after-column">
-                    <div class="column-header">
-                        <h3 class="column-title">✅ AudioToVideo Workflow</h3>
-                        <div class="process-steps">
-                            <div class="step">
-                                <span class="step-number">1</span>
-                                <span class="step-text">Complete your audio production in Logic Pro</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">2</span>
-                                <span class="step-text">Drag audio file to AudioToVideo</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">3</span>
-                                <span class="step-text">Choose background from presets or upload</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">4</span>
-                                <span class="step-text">Click convert (backgrounds auto-size)</span>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">5</span>
-                                <span class="step-text">Download professional video instantly</span>
-                            </div>
+                    <!-- AudioToVideo Workflow Steps (green) -->
+                    <div class="audiotovideo-workflow">
+                        <div class="workflow-step">
+                            <span class="step-text">Drag audio file to AudioToVideo</span>
                         </div>
-                        <div class="time-cost">
-                            <div class="time-badge">~3 minutes</div>
-                            <div class="frustration-note">Seamless • Reliable • Time-saving</div>
+                        <div class="workflow-step">
+                            <span class="step-text">Choose background from presets or upload</span>
+                        </div>
+                        <div class="workflow-step">
+                            <span class="step-text">Export professional video</span>
                         </div>
                     </div>
                 </div>
@@ -2442,7 +2419,7 @@
                     </div>
                     <div class="feature-item">
                         <div class="checkmark">✓</div>
-                        <span>Instant downloads and exports</span>
+                        <span>Instant exports</span>
                     </div>
                     <div class="feature-item">
                         <div class="checkmark">✓</div>
@@ -2470,7 +2447,7 @@
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"/>
                         </svg>
-                        Secure checkout • Instant download
+                        Secure checkout • Instant access
                     </div>
                 </div>
             </div>
@@ -2618,11 +2595,235 @@
             font-weight: 400;
         }
 
-        /* Process Comparison */
+        /* Animated Workflow Comparison */
+        .workflow-comparison-animated {
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .workflow-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .workflow-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 50px;
+            padding: 8px 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .workflow-toggle:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+
+        .toggle-label {
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-label.traditional {
+            color: #dc2626;
+        }
+
+        .toggle-label.audiotovideo {
+            color: #16a34a;
+        }
+
+        .workflow-comparison-animated.active .toggle-label.traditional {
+            opacity: 0.4;
+        }
+
+        .workflow-comparison-animated:not(.active) .toggle-label.audiotovideo {
+            opacity: 0.4;
+        }
+
+        .toggle-switch {
+            width: 56px;
+            height: 32px;
+            background: #e5e7eb;
+            border-radius: 16px;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .workflow-comparison-animated.active .toggle-switch {
+            background: #16a34a;
+        }
+
+        .workflow-comparison-animated:not(.active) .toggle-switch {
+            background: #dc2626;
+        }
+
+        .toggle-slider {
+            width: 24px;
+            height: 24px;
+            background: #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .workflow-comparison-animated.active .toggle-slider {
+            transform: translateX(24px);
+        }
+
+        /* Workflow Steps */
+        .workflow-steps-container {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            position: relative;
+        }
+
+        /* Traditional and AudioToVideo workflow containers */
+        .traditional-workflow,
+        .audiotovideo-workflow {
+            transition: opacity 0.5s ease;
+        }
+
+        .traditional-workflow {
+            opacity: 1;
+        }
+
+        .audiotovideo-workflow {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            position: absolute;
+            top: 32px;
+            left: 32px;
+            right: 32px;
+        }
+
+        /* When active, hide traditional and show AudioToVideo */
+        .workflow-comparison-animated.active .traditional-workflow {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .workflow-comparison-animated.active .audiotovideo-workflow {
+            opacity: 1;
+            max-height: 2000px;
+            position: relative;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .workflow-step {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.4s ease, opacity 0.4s ease, transform 0.4s ease, max-height 0.4s ease, margin 0.4s ease, padding 0.4s ease;
+            max-height: 100px;
+            opacity: 1;
+            transform: translateY(0);
+            overflow: hidden;
+        }
+
+        .workflow-step:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Staggered collapse animation for traditional workflow */
+        .workflow-comparison-animated.active .traditional-workflow .workflow-step {
+            max-height: 0;
+            opacity: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            transform: translateY(-20px);
+        }
+
+        .workflow-comparison-animated.active .traditional-workflow .workflow-step:nth-child(1) { transition-delay: 0s; }
+        .workflow-comparison-animated.active .traditional-workflow .workflow-step:nth-child(2) { transition-delay: 0.05s; }
+        .workflow-comparison-animated.active .traditional-workflow .workflow-step:nth-child(3) { transition-delay: 0.1s; }
+        .workflow-comparison-animated.active .traditional-workflow .workflow-step:nth-child(4) { transition-delay: 0.15s; }
+        .workflow-comparison-animated.active .traditional-workflow .workflow-step:nth-child(5) { transition-delay: 0.2s; }
+        .workflow-comparison-animated.active .traditional-workflow .workflow-step:nth-child(6) { transition-delay: 0.25s; }
+        .workflow-comparison-animated.active .traditional-workflow .workflow-step:nth-child(7) { transition-delay: 0.3s; }
+        .workflow-comparison-animated.active .traditional-workflow .workflow-step:nth-child(8) { transition-delay: 0.35s; }
+        .workflow-comparison-animated.active .traditional-workflow .workflow-step:nth-child(9) { transition-delay: 0.4s; }
+        .workflow-comparison-animated.active .traditional-workflow .workflow-step:nth-child(10) { transition-delay: 0.45s; }
+
+        /* Staggered appear animation for AudioToVideo workflow */
+        .audiotovideo-workflow .workflow-step {
+            opacity: 0;
+            max-height: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            transform: translateY(20px);
+        }
+
+        .workflow-comparison-animated.active .audiotovideo-workflow .workflow-step {
+            opacity: 1;
+            max-height: 100px;
+            margin-bottom: 8px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            transform: translateY(0);
+        }
+
+        .workflow-comparison-animated.active .audiotovideo-workflow .workflow-step:nth-child(1) { transition-delay: 0.6s; }
+        .workflow-comparison-animated.active .audiotovideo-workflow .workflow-step:nth-child(2) { transition-delay: 0.7s; }
+        .workflow-comparison-animated.active .audiotovideo-workflow .workflow-step:nth-child(3) { transition-delay: 0.8s; }
+
+        .workflow-comparison-animated.active .audiotovideo-workflow .workflow-step:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Traditional workflow - all red */
+        .traditional-workflow .workflow-step {
+            background: rgba(220, 38, 38, 0.08);
+            border-left: 4px solid #dc2626;
+        }
+
+        /* AudioToVideo workflow - all green */
+        .audiotovideo-workflow .workflow-step {
+            background: rgba(34, 197, 94, 0.08);
+            border-left: 4px solid #16a34a;
+        }
+
+        .workflow-step .step-text {
+            flex: 1;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #1f2937;
+            font-weight: 500;
+        }
+
+        .traditional-workflow .workflow-step .step-text {
+            color: #7f1d1d;
+        }
+
+        .audiotovideo-workflow .workflow-step .step-text {
+            color: #14532d;
+        }
+
+        /* Old process comparison styles - remove or keep for backward compatibility */
         .process-comparison {
             display: grid;
-            grid-template-columns: 2fr 60px 1fr;
-            gap: 40px;
+            grid-template-columns: 2fr 50px 1fr;
+            gap: 24px;
             align-items: start;
             margin-bottom: 80px;
             align-items: stretch;
@@ -2631,7 +2832,7 @@
         .comparison-column {
             background: #ffffff;
             border-radius: 16px;
-            padding: 24px 20px;
+            padding: 32px 20px;
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
             border: 1px solid rgba(0, 0, 0, 0.06);
             position: relative;
@@ -2659,7 +2860,7 @@
         }
 
         .column-header {
-            margin-bottom: 20px;
+            margin-bottom: 28px;
         }
 
         .column-title {
@@ -2681,18 +2882,26 @@
         .process-steps {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 16px;
         }
 
-        .step {
+        /* Before column uses 2-column grid to show more steps */
+        .before-column .process-steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 24px;
+        }
+
+        .process-steps .step {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            text-align: center;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 12px;
+            text-align: left;
+            padding: 8px 0;
         }
 
-        .step-number {
+        .process-steps .step-number {
             width: 28px;
             height: 28px;
             background: #667eea;
@@ -2704,25 +2913,34 @@
             font-size: 14px;
             font-weight: 700;
             line-height: 1;
+            flex-shrink: 0;
+            order: 0;
         }
 
-        .before-column .step-number {
+        .before-column .process-steps .step-number {
             background: rgba(220, 38, 38, 0.15);
             color: #dc2626;
         }
 
-        .after-column .step-number {
+        .after-column .process-steps .step-number {
             background: rgba(34, 197, 94, 0.15);
             color: #16a34a;
         }
 
-        .step-text {
-            font-size: 13px;
-            line-height: 1.3;
+        .process-steps .step-text {
+            font-size: 14px;
+            line-height: 1.5;
             color: #6e6e73;
             font-weight: 500;
             margin: 0;
-            max-width: 180px;
+            text-align: left;
+            flex: 1;
+            order: 1;
+        }
+
+        /* Hide time-related elements */
+        .time-cost {
+            display: none;
         }
 
         /* Revolution Benefits */
@@ -3978,6 +4196,29 @@
             .guarantee-icon {
                 font-size: 28px;
             }
+
+            /* Workflow comparison responsive */
+            .workflow-toggle {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px 20px;
+            }
+
+            .toggle-label {
+                font-size: 14px;
+            }
+
+            .workflow-steps-container {
+                padding: 20px;
+            }
+
+            .workflow-step {
+                padding: 12px 16px;
+            }
+
+            .workflow-step .step-text {
+                font-size: 14px;
+            }
         }
     </style>
 
@@ -3996,6 +4237,43 @@
                 faqItem.classList.add('active');
             }
         }
+
+        // Workflow Toggle Animation - Triggered on scroll, fires once
+        document.addEventListener('DOMContentLoaded', function() {
+            const workflowToggle = document.getElementById('workflowToggle');
+            const workflowContainer = document.querySelector('.workflow-comparison-animated');
+            let hasAnimated = false;
+            
+            if (workflowToggle && workflowContainer) {
+                // Create Intersection Observer
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        // When element comes into view and hasn't animated yet
+                        if (entry.isIntersecting && !hasAnimated) {
+                            // Wait 500ms after scrolling into view, then animate
+                            setTimeout(() => {
+                                workflowToggle.classList.add('active');
+                                workflowContainer.classList.add('active');
+                                hasAnimated = true;
+                                // Disconnect observer after animation
+                                observer.disconnect();
+                            }, 500);
+                        }
+                    });
+                }, {
+                    threshold: 0.3 // Trigger when 30% of element is visible
+                });
+
+                // Start observing
+                observer.observe(workflowContainer);
+
+                // Manual toggle on click (optional, allows user to toggle back if they want)
+                workflowToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    workflowContainer.classList.toggle('active');
+                });
+            }
+        });
 
         // Auto-rotating user types
         let currentUserType = 0;
