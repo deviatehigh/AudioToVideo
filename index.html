@@ -1468,7 +1468,7 @@
                         </svg>
                         Free Download
                     </a>
-                    <a href="https://www.youtube.com/watch?v=MREC78wadfw" target="_blank" class="btn btn-secondary">
+                    <a href="#" class="btn btn-secondary watch-demo-trigger">
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                         </svg>
@@ -1616,7 +1616,7 @@
                             </svg>
                             Download Free
                         </a>
-                        <a href="https://www.youtube.com/watch?v=MREC78wadfw" target="_blank" class="btn btn-secondary">
+                        <a href="#" class="btn btn-secondary watch-demo-trigger">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                             </svg>
@@ -4150,8 +4150,122 @@
             margin: 0;
         }
 
+        /* Video Modal Overlay */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 10000;
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .video-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px;
+            padding: 8px;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            animation: slideIn 0.4s ease-out;
+        }
+
+        .video-wrapper {
+            position: relative;
+            background: #000000;
+            border-radius: 18px;
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: 300;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .video-container {
+                max-width: 100%;
+                padding: 6px;
+                border-radius: 16px;
+            }
+
+            .video-wrapper {
+                border-radius: 12px;
+            }
+
+            .close-modal {
+                top: -45px;
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
+            }
+
             .premium-section {
                 padding: 100px 20px;
             }
@@ -4344,6 +4458,74 @@
                 }
             });
         });
+
+        // Video Modal Controls
+        document.addEventListener('DOMContentLoaded', function() {
+            const watchDemoBtns = document.querySelectorAll('.watch-demo-trigger');
+            const videoModal = document.getElementById('videoModal');
+            const closeModalBtn = document.getElementById('closeModal');
+            const demoVideo = document.getElementById('demoVideo');
+
+            if (watchDemoBtns.length > 0 && videoModal) {
+                // Open modal for all watch demo buttons
+                watchDemoBtns.forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        videoModal.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                        if (demoVideo) {
+                            demoVideo.play();
+                        }
+                    });
+                });
+
+                // Close modal
+                function closeModal() {
+                    videoModal.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                    if (demoVideo) {
+                        demoVideo.pause();
+                        demoVideo.currentTime = 0; // Reset video to start
+                    }
+                }
+
+                if (closeModalBtn) {
+                    closeModalBtn.addEventListener('click', closeModal);
+                }
+
+                // Close on background click
+                videoModal.addEventListener('click', function(e) {
+                    if (e.target === videoModal) {
+                        closeModal();
+                    }
+                });
+
+                // Close on Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                        closeModal();
+                    }
+                });
+            }
+        });
     </script>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-container">
+            <button id="closeModal" class="close-modal" aria-label="Close video">×</button>
+            <div class="video-wrapper">
+                <!-- Replace this URL with your AWS S3 video URL -->
+                <video 
+                    id="demoVideo" 
+                    controls 
+                    preload="metadata">
+                    <source src="https://my-app-demo-videos-video-hosting.s3.eu-north-1.amazonaws.com/Fine.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
